@@ -85,7 +85,29 @@
       return;
     }
     [].forEach.call(qForm.querySelectorAll(".q__input"), function (el) { el.value = el.value.trim().replace(/\s+/g, " "); });
+    // Um único event_id por envio. Vai no campo oculto (o Astro copia para o CRM) e no fbq,
+    // que repassa o mesmo id ao gateway da API de Conversões. Assim o Meta deduplica os dois Leads.
+    if (!qForm.elements.event_id.value) qForm.elements.event_id.value = qNewEventId();
   }, true);
+
+  function qNewEventId() {
+    if (window.crypto && crypto.randomUUID) return "lead_" + crypto.randomUUID();
+    return "lead_" + Date.now().toString(36) + "_" + Math.random().toString(36).slice(2, 12);
+  }
+
+  // Dados do usuário para a correspondência avançada. O pixel aplica o hash (SHA-256)
+  // antes de enviar, tanto no navegador quanto na cópia que vai para o servidor.
+  var PIXEL_ID = "1157603070025919";
+  function qUserData() {
+    var plain = function (v) { return v.normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase().replace(/[^a-z ]/g, "").trim(); };
+    var parts = plain(qForm.elements.nome.value).split(/\s+/).filter(Boolean);
+    var digits = qTel.value.replace(/\D/g, "");
+    var ud = { country: "br" };
+    if (digits.length >= 10) ud.ph = "55" + digits;
+    if (parts.length) ud.fn = parts[0];
+    if (parts.length > 1) ud.ln = parts[parts.length - 1];
+    return ud;
+  }
 
   function qFail(msg) {
     qErr.textContent = msg;
@@ -123,10 +145,11 @@
     qBar.style.width = "100%";
     qForm.classList.add("is-done");
     if (window.fbq) {
+      fbq("init", PIXEL_ID, qUserData());
       fbq("track", "Lead", {
         content_name: "Diagnóstico — Site Valadares",
         content_category: qForm.elements.especialidade.value
-      });
+      }, { eventID: qForm.elements.event_id.value });
     }
     setTimeout(function () { document.getElementById("quiz-finish").focus(); }, 400);
   });
