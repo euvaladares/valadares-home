@@ -58,7 +58,6 @@
     var phone = fbox(document.getElementById("f-phone"));
     var ad = fbox(document.getElementById("f-ad"));
     var lead = fbox(document.getElementById("f-lead"));
-    var pipe = fbox(document.getElementById("f-pipe"));
     var sale = fbox(document.getElementById("f-sale"));
     var roi = fbox(document.getElementById("f-roi"));
     var loop = fbox(document.getElementById("f-loop"));
@@ -79,20 +78,17 @@
 
     // 02 → 03: página distribui para o atendimento
     var outX = phone.r + 2, mx1 = phone.r + (lead.l - phone.r) / 2;
-    [lead, pipe].forEach(function (c) {
-      fadd("path", { d: felbow(outX, phone.cy, c.l, c.cy, mx1), class: "solid" });
-      fadd("circle", { cx: c.l, cy: c.cy, r: 3.5 });
-    });
+    fadd("path", { d: felbow(outX, phone.cy, lead.l, lead.cy, mx1), class: "solid" });
+    fadd("circle", { cx: lead.l, cy: lead.cy, r: 3.5 });
     fadd("circle", { cx: outX, cy: phone.cy, r: 3.5 });
 
     // 03 → 04: atendimento vira venda
     var mx2 = lead.r + (sale.l - lead.r) / 2;
-    [lead, pipe].forEach(function (c, i) {
-      var target = i === 0 ? sale : roi;
-      fadd("path", { d: felbow(c.r, c.cy, target.l, target.cy, mx2), class: "flow" });
-      fadd("circle", { cx: c.r, cy: c.cy, r: 3.5 });
+    [sale, roi].forEach(function (target) {
+      fadd("path", { d: felbow(lead.r, lead.cy, target.l, target.cy, mx2), class: "flow" });
       fadd("circle", { cx: target.l, cy: target.cy, r: 3.5 });
     });
+    fadd("circle", { cx: lead.r, cy: lead.cy, r: 3.5 });
 
     // 04 → 01: a venda volta para os anúncios
     var ly = loop.cy, sx = roi.cx, ax = ad.cx, r = 18;
@@ -146,11 +142,9 @@
   // Jornada da Ana ------------------------------------------------------
   var STEPS = [
     { t: "O anúncio", d: "A Ana vê no Instagram um anúncio sobre o tratamento que procura. Ele foi feito para alcançar pessoas com real interesse, não qualquer pessoa.", img: "paciente-celular.jpg", l: "Frente: Mídia" },
-    { t: "O site", d: "Ela clica e chega a uma página feita para a sua clínica, que explica o tratamento e facilita o contato. Tudo o que ela faz ali fica registrado.", img: "mao-celular.jpg", l: "Frente: Ambiente" },
-    { t: "O contato", d: "A Ana deixa o WhatsApp. Na mesma hora o contato aparece no CRM da sua equipe, já com a informação de qual anúncio a trouxe.", img: "mulher-celular.jpg", l: "Origem registrada no CRM" },
+    { t: "O site", d: "Ela clica e chega a uma página feita para a sua clínica. Deixa o WhatsApp e o contato cai no CRM já com o anúncio que a trouxe.", img: "mao-celular.jpg", l: "Frente: Ambiente" },
     { t: "O atendimento", d: "Sua recepção vê a Ana no pipeline, liga e agenda a consulta. Se ela não responder, o sistema lembra a equipe de fazer o follow-up.", img: "recepcao.jpg", l: "Frente: Vendas" },
-    { t: "A consulta e o tratamento", d: "A Ana comparece e faz o procedimento. O valor fica registrado no CRM.", img: "consulta-1.jpg", l: "Faturamento registrado" },
-    { t: "O aprendizado", d: "Esse resultado é enviado de forma segura ao Meta e ao Google. Eles passam a procurar mais pessoas parecidas com a Ana — gente que de fato vira paciente.", img: "medico-consultorio.jpg", l: "O ciclo de dados" },
+    { t: "O aprendizado", d: "A Ana faz o procedimento e o valor fica no CRM. Esse resultado vai de forma segura para o Meta e o Google, que passam a procurar mais pessoas como ela.", img: "medico-consultorio.jpg", l: "O ciclo de dados" },
     { t: "O retorno", d: "Meses depois, o CRM lembra a equipe de chamar a Ana para a revisão. Ela volta. O relatório mostra quanto a Ana já rendeu desde aquele primeiro anúncio.", img: "paciente-sorriso.jpg", l: "LTV medido" }
   ];
 
