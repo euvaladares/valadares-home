@@ -21,29 +21,98 @@
     reveals.forEach(function (el) { el.classList.add("is-in"); });
   }
 
-  // Contadores ----------------------------------------------------------
-  var counters = document.querySelectorAll("[data-count]");
-  function runCount(el) {
-    var end = +el.getAttribute("data-count");
-    if (reduce || end < 2) { el.textContent = end; return; }
-    var t0 = null, dur = 1400;
-    function tick(t) {
-      if (!t0) t0 = t;
-      var p = Math.min((t - t0) / dur, 1);
-      el.textContent = Math.round(end * (1 - Math.pow(1 - p, 3)));
-      if (p < 1) requestAnimationFrame(tick);
-    }
-    el.textContent = "0";
-    requestAnimationFrame(tick);
+  // Funil: linhas que ligam as etapas ----------------------------------
+  var funnel = document.getElementById("funnel");
+  var fsvg = document.getElementById("funnel-lines");
+  var SVGNS = "http://www.w3.org/2000/svg";
+
+  function fbox(el) {
+    var r = el.getBoundingClientRect(), b = funnel.getBoundingClientRect();
+    return { l: r.left - b.left, r: r.right - b.left, t: r.top - b.top, b: r.bottom - b.top, cx: (r.left + r.right) / 2 - b.left, cy: (r.top + r.bottom) / 2 - b.top };
   }
-  if ("IntersectionObserver" in window) {
-    var co = new IntersectionObserver(function (entries) {
-      entries.forEach(function (e) {
-        if (e.isIntersecting) { runCount(e.target); co.unobserve(e.target); }
-      });
-    }, { threshold: 0.6 });
-    counters.forEach(function (el) { co.observe(el); });
+  function fadd(tag, attrs) {
+    var n = document.createElementNS(SVGNS, tag);
+    for (var k in attrs) n.setAttribute(k, attrs[k]);
+    fsvg.appendChild(n);
+    return n;
   }
+  function fcurve(x1, y1, x2, y2) {
+    var dx = (x2 - x1) * 0.55;
+    return "M" + x1 + " " + y1 + " C" + (x1 + dx) + " " + y1 + " " + (x2 - dx) + " " + y2 + " " + x2 + " " + y2;
+  }
+  // Cotovelo com cantos arredondados: sai na horizontal, desce/sobe em mx, entra na horizontal.
+  function felbow(x1, y1, x2, y2, mx) {
+    var r = Math.min(12, Math.abs(y2 - y1) / 2);
+    if (r < 1) return "M" + x1 + " " + y1 + " H" + x2;
+    var s = y2 > y1 ? 1 : -1;
+    return "M" + x1 + " " + y1 + " H" + (mx - r) + " Q" + mx + " " + y1 + " " + mx + " " + (y1 + s * r) +
+      " V" + (y2 - s * r) + " Q" + mx + " " + y2 + " " + (mx + r) + " " + y2 + " H" + x2;
+  }
+
+  function drawFunnel() {
+    if (getComputedStyle(fsvg).display === "none") return;
+    while (fsvg.firstChild) fsvg.removeChild(fsvg.firstChild);
+    var W = funnel.clientWidth, H = funnel.clientHeight;
+    fsvg.setAttribute("viewBox", "0 0 " + W + " " + H);
+
+    var phone = fbox(document.getElementById("f-phone"));
+    var ad = fbox(document.getElementById("f-ad"));
+    var lead = fbox(document.getElementById("f-lead"));
+    var pipe = fbox(document.getElementById("f-pipe"));
+    var sale = fbox(document.getElementById("f-sale"));
+    var roi = fbox(document.getElementById("f-roi"));
+    var loop = fbox(document.getElementById("f-loop"));
+
+    // 01: canais alimentam o anúncio; 01 → 02: o anúncio leva para a página
+    funnel.querySelectorAll('[data-f="ch"]').forEach(function (c, i) {
+      var b = fbox(c);
+      var ty = ad.cy + (i - 1.5) * 14;
+      fadd("path", { d: fcurve(b.r, b.cy, ad.l, ty), class: "flow" });
+    });
+    fadd("circle", { cx: ad.l, cy: ad.cy, r: 3.5 });
+    var inX = phone.l - 2, inY = phone.cy;
+    [-36, 0, 36].forEach(function (off) {
+      fadd("path", { d: fcurve(ad.r, ad.cy + off, inX, inY), class: "flow" });
+    });
+    fadd("circle", { cx: ad.r, cy: ad.cy, r: 3.5 });
+    fadd("circle", { cx: inX, cy: inY, r: 3.5 });
+
+    // 02 → 03: página distribui para o atendimento
+    var outX = phone.r + 2, mx1 = phone.r + (lead.l - phone.r) / 2;
+    [lead, pipe].forEach(function (c) {
+      fadd("path", { d: felbow(outX, phone.cy, c.l, c.cy, mx1), class: "solid" });
+      fadd("circle", { cx: c.l, cy: c.cy, r: 3.5 });
+    });
+    fadd("circle", { cx: outX, cy: phone.cy, r: 3.5 });
+
+    // 03 → 04: atendimento vira venda
+    var mx2 = lead.r + (sale.l - lead.r) / 2;
+    [lead, pipe].forEach(function (c, i) {
+      var target = i === 0 ? sale : roi;
+      fadd("path", { d: felbow(c.r, c.cy, target.l, target.cy, mx2), class: "flow" });
+      fadd("circle", { cx: c.r, cy: c.cy, r: 3.5 });
+      fadd("circle", { cx: target.l, cy: target.cy, r: 3.5 });
+    });
+
+    // 04 → 01: a venda volta para os anúncios
+    var ly = loop.cy, sx = roi.cx, ax = ad.cx, r = 18;
+    fadd("path", {
+      d: "M" + sx + " " + roi.b + " V" + (ly - r) + " Q" + sx + " " + ly + " " + (sx - r) + " " + ly +
+        " H" + (ax + r) + " Q" + ax + " " + ly + " " + ax + " " + (ly - r) + " V" + (ad.b + 8),
+      class: "loop"
+    });
+    fadd("path", { d: "M" + (ax - 5) + " " + (ad.b + 10) + " L" + ax + " " + (ad.b + 2) + " L" + (ax + 5) + " " + (ad.b + 10) + " Z", class: "arrow" });
+    fadd("circle", { cx: sx, cy: roi.b, r: 3.5 });
+  }
+
+  var fraf = null;
+  function scheduleFunnel() { cancelAnimationFrame(fraf); fraf = requestAnimationFrame(drawFunnel); }
+  if ("ResizeObserver" in window) new ResizeObserver(scheduleFunnel).observe(funnel);
+  window.addEventListener("resize", scheduleFunnel);
+  window.addEventListener("load", scheduleFunnel);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(scheduleFunnel);
+  funnel.querySelectorAll("img").forEach(function (img) { if (!img.complete) img.addEventListener("load", scheduleFunnel); });
+  scheduleFunnel();
 
   // Barra flutuante -----------------------------------------------------
   var bar = document.getElementById("floatbar");
