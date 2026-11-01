@@ -817,8 +817,9 @@ mark {
   letter-spacing: -.045em;
   line-height: 1.08;
   max-width: 900px;
-  margin: 0 auto 36px;
+  margin: 0 auto 18px;
 }
+.cta__sub { color: var(--tinta-2); font-size: 16px; margin: 0 0 32px; }
 
 /* Contato ------------------------------------------------------------ */
 kbd {
@@ -1139,6 +1140,7 @@ kbd {
 }
 
 @media (max-width: 480px) {
+  .btn { white-space: normal; text-align: left; }
   .hero__title { font-size: 34px; }
   .checks { grid-template-columns: 1fr; }
   .ask { font-size: 13px; }

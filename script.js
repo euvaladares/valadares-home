@@ -141,11 +141,11 @@
 
   // Jornada da Ana ------------------------------------------------------
   var STEPS = [
-    { t: "O anúncio", d: "A Ana vê no Instagram um anúncio sobre o tratamento que procura. Ele foi feito para alcançar pessoas com real interesse, não qualquer pessoa.", img: "paciente-celular.jpg", l: "Frente: Mídia" },
-    { t: "O site", d: "Ela clica e chega a uma página feita para a sua clínica. Deixa o WhatsApp e o contato cai no CRM já com o anúncio que a trouxe.", img: "mao-celular.jpg", l: "Frente: Ambiente" },
-    { t: "O atendimento", d: "Sua recepção vê a Ana no pipeline, liga e agenda a consulta. Se ela não responder, o sistema lembra a equipe de fazer o follow-up.", img: "recepcao.jpg", l: "Frente: Vendas" },
-    { t: "O aprendizado", d: "A Ana faz o procedimento e o valor fica no CRM. Esse resultado vai de forma segura para o Meta e o Google, que passam a procurar mais pessoas como ela.", img: "medico-consultorio.jpg", l: "O ciclo de dados" },
-    { t: "O retorno", d: "Meses depois, o CRM lembra a equipe de chamar a Ana para a revisão. Ela volta. O relatório mostra quanto a Ana já rendeu desde aquele primeiro anúncio.", img: "paciente-sorriso.jpg", l: "LTV medido" }
+    { t: "O anúncio", d: "A Ana procura há meses um tratamento para manchas. Um anúncio da sua clínica aparece no Instagram falando exatamente disso. Ele não foi feito para todo mundo. Foi feito para ela.", img: "paciente-celular.jpg", l: "Frente: Mídia" },
+    { t: "O site", d: "Ela clica e cai numa página que explica o tratamento, mostra quem é o médico e tira as dúvidas mais comuns. Deixa o WhatsApp, e o contato chega no CRM já dizendo qual anúncio a trouxe.", img: "mao-celular.jpg", l: "Frente: Ambiente" },
+    { t: "O atendimento", d: "Em poucos minutos a recepção chama a Ana e agenda a avaliação. Se ela some, o sistema lembra a equipe de tentar de novo. Nenhum contato fica perdido numa conversa antiga.", img: "recepcao.jpg", l: "Frente: Vendas" },
+    { t: "O aprendizado", d: "A Ana faz o procedimento e o valor fica registrado. Essa informação volta, de forma segura, para o Meta e o Google, que passam a procurar mais pessoas como ela. E menos curiosos.", img: "medico-consultorio.jpg", l: "O ciclo de dados" },
+    { t: "O retorno", d: "Meses depois, o CRM avisa que é hora da revisão. A Ana volta. E você vê no relatório quanto ela já rendeu desde aquele primeiro anúncio.", img: "paciente-sorriso.jpg", l: "LTV medido" }
   ];
 
   var stepsEl = document.querySelector(".steps");
