@@ -725,8 +725,7 @@ kbd {
 .hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
 .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 
-/* Quiz (tela cheia) -------------------------------------------------- */
-html.quiz-open { overflow: hidden; }
+/* Quiz (página /form) ------------------------------------------------ */
 .quiz {
   position: fixed;
   inset: 0;
@@ -738,7 +737,6 @@ html.quiz-open { overflow: hidden; }
   transition: opacity .3s var(--ease);
 }
 .quiz.is-open { opacity: 1; }
-.quiz[hidden] { display: none; }
 .quiz::before {
   content: "";
   position: absolute;
@@ -752,9 +750,22 @@ html.quiz-open { overflow: hidden; }
 }
 .quiz__progress { height: 4px; background: var(--nevoa); }
 .quiz__progress span { display: block; height: 100%; width: 0; background: var(--verde); transition: width .5s var(--ease); }
-.quiz__top { display: flex; justify-content: space-between; align-items: center; padding: 20px var(--gutter); position: relative; }
+.quiz__top { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; padding: 20px var(--gutter); position: relative; }
+.quiz__home { justify-self: center; }
 .quiz__logo { height: 22px; width: auto; }
-.quiz__close svg { transform: rotate(45deg); font-size: 22px; }
+.quiz__back {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid var(--linha);
+  display: grid;
+  place-items: center;
+  color: var(--tinta-2);
+  font-size: 18px;
+  transition: border-color .2s, color .2s, background .2s, transform .3s var(--ease);
+}
+.quiz__back:hover { border-color: var(--salvia); color: var(--verde); background: var(--nevoa-2); transform: translateX(-2px); }
+.quiz__back:focus-visible { outline: 2px solid var(--verde); outline-offset: 2px; }
 
 .quiz__form {
   position: relative;
