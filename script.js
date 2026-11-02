@@ -144,7 +144,7 @@
     { t: "O anúncio", d: "A Ana procura há meses um tratamento para manchas. Um anúncio da sua clínica aparece no Instagram falando exatamente disso. Feito para ela.", img: "paciente-celular.jpg", l: "Frente: Mídia" },
     { t: "O site", d: "Ela clica, cai numa página que tira as dúvidas e deixa o WhatsApp. O contato chega no CRM já dizendo qual anúncio a trouxe.", img: "mao-celular.jpg", l: "Frente: Ambiente" },
     { t: "O atendimento", d: "Em minutos a recepção chama a Ana e agenda a avaliação. Se ela some, o sistema lembra a equipe de tentar de novo.", img: "recepcao.jpg", l: "Frente: Vendas" },
-    { t: "A venda", d: "A Ana fecha o procedimento e o valor fica registrado. Essa venda volta para o Meta e o Google, que passam a buscar mais pacientes como ela.", img: "medico-consultorio.jpg", l: "O ciclo de dados" },
+    { t: "A venda", d: "A Ana fecha o procedimento e o valor fica registrado. Essa venda volta para o Meta e o Google, que passam a buscar mais pacientes como ela.", img: "clinica-branca.jpg", l: "O ciclo de dados" },
     { t: "O retorno", d: "Meses depois, o CRM avisa que é hora da revisão. A Ana volta, e o relatório mostra quanto ela já rendeu desde o primeiro anúncio.", img: "paciente-sorriso.jpg", l: "LTV medido" }
   ];
 
@@ -196,27 +196,55 @@
     });
   }
 
-  function go(i) {
+  // Troca de foto com rolagem lateral: a nova foto só entra depois de decodificada,
+  // deslizando por cima da anterior, que sai para o lado oposto e é removida no fim.
+  var jMedia = document.querySelector(".journey__media");
+  var slideId = 0;
+  function slideTo(src, dir) {
+    var id = ++slideId;
+    var next = new Image();
+    next.alt = "";
+    next.src = src;
+    var ready = new Promise(function (res) {
+      if (next.decode) next.decode().then(res, res);
+      else if (next.complete) res();
+      else next.onload = next.onerror = res;
+      setTimeout(res, 250); // nunca segura a troca se a decodificação demorar
+    });
+    ready.then(function () {
+      if (id !== slideId) return;
+      var old = jimg;
+      jimg = next;
+      jMedia.insertBefore(next, jlabel);
+      if (reduce || !next.animate) { old.remove(); return; }
+      var opts = { duration: 750, easing: "cubic-bezier(.65, 0, .35, 1)", fill: "forwards" };
+      var anim = next.animate({ transform: ["translateX(" + dir * 100 + "%)", "translateX(0)"] }, opts);
+      old.animate({ transform: ["translateX(0)", "translateX(" + -dir * 100 + "%)"] }, opts);
+      setTimeout(function () { anim.cancel(); old.remove(); }, 780);
+    });
+  }
+
+  function go(i, dir) {
     i = (i + STEPS.length) % STEPS.length;
+    if (i === cur) return;
+    dir = dir || (i > cur ? 1 : -1);
     cur = i;
     elapsed = 0;
     var s = STEPS[i];
     paint();
+    slideTo("assets/img/" + s.img, dir);
     jText.classList.add("is-swap");
-    jimg.classList.add("is-swap");
     setTimeout(function () {
       jn.textContent = pad(i + 1) + " / " + pad(STEPS.length);
       jt.textContent = s.t;
       jd.textContent = s.d;
       jlabel.textContent = s.l;
-      jimg.src = "assets/img/" + s.img;
       jText.classList.remove("is-swap");
-      jimg.classList.remove("is-swap");
     }, reduce ? 0 : 320);
   }
 
-  document.getElementById("jprev").addEventListener("click", function () { go(cur - 1); });
-  document.getElementById("jnext").addEventListener("click", function () { go(cur + 1); });
+  document.getElementById("jprev").addEventListener("click", function () { go(cur - 1, -1); });
+  document.getElementById("jnext").addEventListener("click", function () { go(cur + 1, 1); });
 
   // Avanço automático: 9 s por etapa, com a linha enchendo até a próxima.
   // Pausa fora da tela, com a aba escondida ou com o mouse sobre o conteúdo.
@@ -234,7 +262,7 @@
     lastT = t;
     var p = Math.min(elapsed / SLIDE_MS, 1);
     if (lines[cur]) lines[cur].firstChild.style.transform = "scaleX(" + p + ")";
-    if (p >= 1) go(cur + 1);
+    if (p >= 1) go(cur + 1, 1);
     requestAnimationFrame(tick);
   }
   if (!reduce) {

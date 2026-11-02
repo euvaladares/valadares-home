@@ -213,7 +213,7 @@ mark {
 .hero__left { display: flex; flex-direction: column; padding: 14px 0 6px; }
 
 .nav { display: flex; align-items: center; justify-content: space-between; gap: 24px; }
-.nav__logo img { height: 26px; width: auto; }
+.nav__logo img { height: 32.5px; width: auto; }
 .nav__links { display: flex; gap: 30px; font-size: 14px; }
 .nav__links a { position: relative; opacity: .8; transition: opacity .2s; }
 .nav__links a:hover, .nav__links a.is-active { opacity: 1; }
@@ -338,52 +338,6 @@ mark {
 .float-b { animation: bob 6s ease-in-out -3s infinite; }
 @keyframes bob { 50% { transform: translateY(-6px); } }
 
-/* Bento -------------------------------------------------------------- */
-.bento {
-  display: grid;
-  grid-template-columns: 1.25fr 1fr 1fr 1fr;
-  gap: 12px;
-}
-.bento .card { min-height: 320px; }
-.card {
-  position: relative;
-  overflow: hidden;
-  border-radius: var(--r-s);
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  transition: transform .5s var(--ease);
-}
-.card:hover { transform: translateY(-4px); }
-.card h3 { font-size: 18px; font-weight: 500; letter-spacing: -.01em; margin: 0 0 6px; }
-.card p { font-size: 13px; line-height: 1.45; color: var(--tinta-2); margin: 0; }
-.card--mint { background: var(--menta); }
-.card--gray { background: var(--nevoa-2); }
-.card--sage { background: var(--salvia-2); }
-.card__ico {
-  position: relative;
-  z-index: 1;
-  width: 52px;
-  height: 52px;
-  border-radius: 50%;
-  display: grid;
-  place-items: center;
-  background: var(--branco);
-  font-size: 22px;
-}
-.card--photo { padding: 14px; }
-.card--photo > img {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 1.2s var(--ease);
-}
-.card--photo:hover > img { transform: scale(1.04); }
-.card--photo .label { position: relative; align-self: flex-start; }
-.card--deco > div { position: relative; }
 .deco {
   position: absolute;
   width: 230px;
@@ -393,7 +347,6 @@ mark {
   pointer-events: none;
   transition: transform 1.4s var(--ease);
 }
-.card:hover .deco { transform: rotate(30deg); }
 
 /* Funil -------------------------------------------------------------- */
 .head-row { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; margin-bottom: 64px; }
@@ -637,7 +590,6 @@ mark {
 .journey { border-top: 1px solid var(--linha); padding-top: 64px; }
 .journey__top { display: flex; justify-content: space-between; align-items: flex-start; gap: 24px; }
 .journey__top .bullet { margin-top: 24px; }
-.journey__ctrl { display: flex; align-items: center; gap: 12px; }
 .steps { display: flex; align-items: center; gap: 12px; margin: 56px 0 48px; flex-wrap: wrap; }
 .step {
   border: 0;
@@ -675,13 +627,12 @@ mark {
 
 .journey__body { display: grid; grid-template-columns: 1fr 1.15fr; gap: 56px; align-items: center; }
 .journey__n { display: block; font-size: 14px; color: var(--cinza-txt); margin-bottom: 14px; }
-.journey__text p { color: var(--tinta-2); font-size: 18px; line-height: 1.55; max-width: 440px; margin: 18px 0 0; min-height: 4.7em; }
+.journey__text p { color: var(--tinta-2); font-size: 18px; line-height: 1.55; max-width: 440px; margin: 18px 0 32px; min-height: 4.7em; }
 .journey__nav { display: flex; gap: 10px; }
 .journey__nav .circle { width: 52px; height: 52px; }
 .journey__media { position: relative; border-radius: var(--r); overflow: hidden; aspect-ratio: 16 / 11; background: var(--nevoa); }
-.journey__media img { width: 100%; height: 100%; object-fit: cover; transition: opacity .45s var(--ease), transform .9s var(--ease); }
-.journey__media img.is-swap { opacity: 0; transform: scale(1.03); }
-.journey__media .label { position: absolute; left: 16px; bottom: 16px; }
+.journey__media img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.journey__media .label { position: absolute; left: 16px; bottom: 16px; z-index: 1; }
 .journey__text .h3, .journey__text p { transition: opacity .35s var(--ease); }
 .journey__text.is-swap .h3, .journey__text.is-swap p { opacity: 0; }
 
@@ -992,9 +943,6 @@ kbd {
 
 /* Responsivo --------------------------------------------------------- */
 @media (max-width: 1100px) {
-  .bento { grid-template-columns: repeat(3, 1fr); }
-  .bento .b-foto { grid-column: 1 / -1; min-height: 260px; }
-  .bento .b-foto img { object-position: 50% 30%; }
   .compare { grid-template-columns: 1fr 1fr; }
   .cmp--us { grid-column: span 2; }
 }
@@ -1008,7 +956,7 @@ kbd {
   .hero { grid-template-columns: 1fr; min-height: 0; padding-top: 12px; }
   .hero__left { display: contents; }
   .nav { order: 0; padding: 4px 4px 0; position: relative; }
-  .nav__logo img { height: 22px; }
+  .nav__logo img { height: 27.5px; }
   .nav__burger {
     display: grid;
     gap: 6px;
@@ -1053,11 +1001,6 @@ kbd {
   .mini--row { align-self: flex-start; }
 
   .statement { font-size: 28px; }
-  .bento { grid-template-columns: 1fr; gap: 8px; }
-  .bento .b-foto { display: none; }
-  .bento .card:not(.b-foto) { min-height: 0; flex-direction: row; align-items: center; justify-content: flex-start; gap: 16px; padding: 16px; }
-  .bento .card__ico { width: 46px; height: 46px; font-size: 20px; flex: none; }
-  .bento .deco { width: 140px; right: -50px; bottom: -60px; }
   .head-row { flex-direction: column; align-items: flex-start; margin-bottom: 40px; }
 
   .soft { grid-template-columns: 1fr; padding: 28px 20px; border-radius: 28px; }
@@ -1072,7 +1015,6 @@ kbd {
 
   .journey { padding-top: 48px; }
   .journey__top { flex-direction: column; }
-  .journey__ctrl { width: 100%; justify-content: space-between; }
   .journey__text p { font-size: 16px; }
   .steps { margin: 36px 0 32px; gap: 6px; flex-wrap: nowrap; }
   .step__line { min-width: 4px; }
