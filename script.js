@@ -141,11 +141,11 @@
 
   // Jornada da Ana ------------------------------------------------------
   var STEPS = [
-    { t: "O anúncio", d: "A Ana procura há meses um tratamento para manchas. Um anúncio da sua clínica aparece no Instagram falando exatamente disso. Ele não foi feito para todo mundo. Foi feito para ela.", img: "paciente-celular.jpg", l: "Frente: Mídia" },
-    { t: "O site", d: "Ela clica e cai numa página que explica o tratamento, mostra quem é o médico e tira as dúvidas mais comuns. Deixa o WhatsApp, e o contato chega no CRM já dizendo qual anúncio a trouxe.", img: "mao-celular.jpg", l: "Frente: Ambiente" },
-    { t: "O atendimento", d: "Em poucos minutos a recepção chama a Ana e agenda a avaliação. Se ela some, o sistema lembra a equipe de tentar de novo. Nenhum contato fica perdido numa conversa antiga.", img: "recepcao.jpg", l: "Frente: Vendas" },
-    { t: "O aprendizado", d: "A Ana faz o procedimento e o valor fica registrado. Essa informação volta, de forma segura, para o Meta e o Google, que passam a procurar mais pessoas como ela. E menos curiosos.", img: "medico-consultorio.jpg", l: "O ciclo de dados" },
-    { t: "O retorno", d: "Meses depois, o CRM avisa que é hora da revisão. A Ana volta. E você vê no relatório quanto ela já rendeu desde aquele primeiro anúncio.", img: "paciente-sorriso.jpg", l: "LTV medido" }
+    { t: "O anúncio", d: "A Ana procura há meses um tratamento para manchas. Um anúncio da sua clínica aparece no Instagram falando exatamente disso. Feito para ela.", img: "paciente-celular.jpg", l: "Frente: Mídia" },
+    { t: "O site", d: "Ela clica, cai numa página que tira as dúvidas e deixa o WhatsApp. O contato chega no CRM já dizendo qual anúncio a trouxe.", img: "mao-celular.jpg", l: "Frente: Ambiente" },
+    { t: "O atendimento", d: "Em minutos a recepção chama a Ana e agenda a avaliação. Se ela some, o sistema lembra a equipe de tentar de novo.", img: "recepcao.jpg", l: "Frente: Vendas" },
+    { t: "A venda", d: "A Ana fecha o procedimento e o valor fica registrado. Essa venda volta para o Meta e o Google, que passam a buscar mais pacientes como ela.", img: "medico-consultorio.jpg", l: "O ciclo de dados" },
+    { t: "O retorno", d: "Meses depois, o CRM avisa que é hora da revisão. A Ana volta, e o relatório mostra quanto ela já rendeu desde o primeiro anúncio.", img: "paciente-sorriso.jpg", l: "LTV medido" }
   ];
 
   var stepsEl = document.querySelector(".steps");
@@ -157,22 +157,26 @@
   var jlabel = document.getElementById("jlabel");
   var cur = 0;
   var buttons = [];
+  var lines = [];
 
   // Pré-carrega as fotos da jornada
   STEPS.forEach(function (s) { var i = new Image(); i.src = "assets/img/" + s.img; });
 
   STEPS.forEach(function (s, i) {
     if (i > 0) {
+      // A linha entre duas etapas é a barra de progresso até a próxima.
       var line = document.createElement("span");
       line.className = "step__line";
+      line.appendChild(document.createElement("i"));
       stepsEl.appendChild(line);
+      lines.push(line);
     }
     var b = document.createElement("button");
     b.className = "step";
     b.type = "button";
     b.setAttribute("role", "tab");
     b.setAttribute("aria-label", "Etapa " + (i + 1) + ": " + s.t);
-    b.addEventListener("click", function () { go(i, true); });
+    b.addEventListener("click", function () { go(i); });
     stepsEl.appendChild(b);
     buttons.push(b);
   });
@@ -186,12 +190,16 @@
       b.setAttribute("aria-selected", i === cur ? "true" : "false");
       b.textContent = i === cur ? pad(i + 1) : "";
     });
+    lines.forEach(function (l, i) {
+      l.classList.toggle("is-done", i < cur);
+      l.firstChild.style.transform = i < cur ? "scaleX(1)" : "scaleX(0)";
+    });
   }
 
-  function go(i, user) {
+  function go(i) {
     i = (i + STEPS.length) % STEPS.length;
-    if (i === cur && !user) return;
     cur = i;
+    elapsed = 0;
     var s = STEPS[i];
     paint();
     jText.classList.add("is-swap");
@@ -205,27 +213,69 @@
       jText.classList.remove("is-swap");
       jimg.classList.remove("is-swap");
     }, reduce ? 0 : 320);
-    if (user) restart();
   }
 
-  document.getElementById("jprev").addEventListener("click", function () { go(cur - 1, true); });
-  document.getElementById("jnext").addEventListener("click", function () { go(cur + 1, true); });
+  document.getElementById("jprev").addEventListener("click", function () { go(cur - 1); });
+  document.getElementById("jnext").addEventListener("click", function () { go(cur + 1); });
 
-  var timer = null;
+  // Avanço automático: 9 s por etapa, com a linha enchendo até a próxima.
+  // Pausa fora da tela, com a aba escondida ou com o mouse sobre o conteúdo.
+  var SLIDE_MS = 9000;
+  var elapsed = 0;
+  var lastT = null;
   var journeyVisible = false;
-  function restart() {
-    clearInterval(timer);
-    if (reduce || !journeyVisible) return;
-    timer = setInterval(function () { go(cur + 1); }, 6000);
+  var hovering = false;
+  var journeyBody = document.querySelector(".journey__body");
+  journeyBody.addEventListener("mouseenter", function () { hovering = true; });
+  journeyBody.addEventListener("mouseleave", function () { hovering = false; });
+
+  function tick(t) {
+    if (lastT !== null && journeyVisible && !hovering && !document.hidden) elapsed += t - lastT;
+    lastT = t;
+    var p = Math.min(elapsed / SLIDE_MS, 1);
+    if (lines[cur]) lines[cur].firstChild.style.transform = "scaleX(" + p + ")";
+    if (p >= 1) go(cur + 1);
+    requestAnimationFrame(tick);
   }
-  if ("IntersectionObserver" in window) {
-    new IntersectionObserver(function (entries) {
-      journeyVisible = entries[0].isIntersecting;
-      restart();
-    }, { threshold: 0.4 }).observe(document.getElementById("jornada"));
+  if (!reduce) {
+    if ("IntersectionObserver" in window) {
+      new IntersectionObserver(function (entries) {
+        journeyVisible = entries[0].isIntersecting;
+      }, { threshold: 0.4 }).observe(document.getElementById("jornada"));
+    } else {
+      journeyVisible = true;
+    }
+    requestAnimationFrame(tick);
   }
   jn.textContent = "01 / " + pad(STEPS.length);
   paint();
+
+  // FAQ: abre e fecha com animação, um de cada vez -----------------------
+  var qas = [].slice.call(document.querySelectorAll(".qa"));
+  function qaSet(d, open) {
+    var from = d.getBoundingClientRect().height;
+    if (d._anim) { d._anim.cancel(); clearTimeout(d._done); }
+    d.classList.toggle("is-closing", !open);
+    d.open = true;
+    var to = open ? d.getBoundingClientRect().height : d.querySelector("summary").getBoundingClientRect().height;
+    if (reduce) { d.open = open; d.classList.remove("is-closing"); return; }
+    d._anim = d.animate({ height: [from + "px", to + "px"] }, { duration: 420, easing: "cubic-bezier(.22, 1, .36, 1)" });
+    // Um timer (e não o fim da animação) fecha o estado, para nunca ficar preso no meio.
+    d._done = setTimeout(function () {
+      d._anim.cancel();
+      d._anim = null;
+      d.open = open;
+      d.classList.remove("is-closing");
+    }, 440);
+  }
+  qas.forEach(function (d) {
+    d.querySelector("summary").addEventListener("click", function (e) {
+      e.preventDefault();
+      var open = !d.open || d.classList.contains("is-closing");
+      if (open) qas.forEach(function (o) { if (o !== d && o.open && !o.classList.contains("is-closing")) qaSet(o, false); });
+      qaSet(d, open);
+    });
+  });
 
   document.getElementById("year").textContent = new Date().getFullYear();
 })();
