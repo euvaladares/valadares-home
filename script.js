@@ -141,11 +141,11 @@
 
   // Jornada da Ana ------------------------------------------------------
   var STEPS = [
-    { t: "O anúncio", d: "A Ana procura há meses um tratamento para manchas. Um anúncio da sua clínica aparece no Instagram falando exatamente disso. Feito para ela.", img: "paciente-celular.jpg", l: "Frente: Mídia" },
-    { t: "O site", d: "Ela clica, cai numa página que tira as dúvidas e deixa o WhatsApp. O contato chega no CRM já dizendo qual anúncio a trouxe.", img: "mao-celular.jpg", l: "Frente: Ambiente" },
-    { t: "O atendimento", d: "Em minutos a recepção chama a Ana e agenda a avaliação. Se ela some, o sistema lembra a equipe de tentar de novo.", img: "recepcao.jpg", l: "Frente: Vendas" },
-    { t: "A venda", d: "A Ana fecha o procedimento e o valor fica registrado. Essa venda volta para o Meta e o Google, que passam a buscar mais pacientes como ela.", img: "clinica-branca.jpg", l: "O ciclo de dados" },
-    { t: "O retorno", d: "Meses depois, o CRM avisa que é hora da revisão. A Ana volta, e o relatório mostra quanto ela já rendeu desde o primeiro anúncio.", img: "paciente-sorriso.jpg", l: "LTV medido" }
+    { t: "O anúncio", d: "A Ana procura há meses um tratamento para manchas. Um anúncio da sua clínica aparece no Instagram falando exatamente disso. Feito para ela.", img: "paciente-celular.jpg", l: "Frente: Marketing" },
+    { t: "O site", d: "Ela clica e cai numa página que tira as dúvidas. Deixa o contato, que chega no Astro já dizendo qual anúncio a trouxe.", img: "mao-celular.jpg", l: "Frente: Sites" },
+    { t: "O atendimento", d: "Ana manda mensagem às 22h. A atendente de IA responde na hora, tira as dúvidas e marca a avaliação. De manhã, a recepção já tem o resumo.", img: "recepcao.jpg", l: "Frente: Atendente de IA" },
+    { t: "A venda", d: "A Ana fecha o procedimento e o valor fica registrado no Astro. A venda volta para o Meta, que passa a buscar mais pacientes como ela.", img: "clinica-branca.jpg", l: "Frente: Integrações" },
+    { t: "O retorno", d: "Meses depois, o Astro avisa que é hora da revisão. A Ana volta, e o relatório mostra quanto ela já rendeu desde o primeiro anúncio.", img: "paciente-sorriso.jpg", l: "Frente: CRM" }
   ];
 
   var stepsEl = document.querySelector(".steps");

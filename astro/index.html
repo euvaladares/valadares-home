@@ -7,9 +7,9 @@
   <meta name="description" content="O Astro recebe cada paciente na hora em que ele chega, guarda de onde veio, cobra o primeiro contato no prazo e mostra quanto cada campanha virou de venda.">
   <meta property="og:title" content="Astro | O CRM da Valadares para clínicas">
   <meta property="og:description" content="Nenhum paciente sem resposta, nenhum orçamento esquecido e o retorno do marketing provado em reais.">
-  <meta property="og:image" content="../assets/img/astro/dashboard.webp">
+  <meta property="og:image" content="/assets/img/astro/dashboard.webp">
   <meta name="theme-color" content="#163336">
-  <link rel="icon" type="image/png" href="../assets/brand/simbolo-verde.png">
+  <link rel="icon" type="image/png" href="/assets/brand/simbolo-verde.png">
 
   <!-- Astro CRM -->
   <script src="https://astro.valadares.co/astro.js" data-source="src_f5cb68f1d1864bdbbae436220d61ed85" async></script>
@@ -41,8 +41,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../styles.css?v=12">
-  <link rel="stylesheet" href="astro.css?v=2">
+  <link rel="stylesheet" href="/styles.css?v=13">
+  <link rel="stylesheet" href="/astro/astro.css?v=3">
 </head>
 <body>
 <noscript><img height="1" width="1" style="display:none" alt=""
@@ -82,7 +82,7 @@ src="https://www.facebook.com/tr?id=1157603070025919&ev=PageView&noscript=1"
 
 <!-- Barra fixa que aparece ao rolar -->
 <div class="floatbar" id="floatbar" aria-hidden="true">
-  <a href="#topo" class="floatbar__logo" tabindex="-1"><img src="../assets/brand/simbolo-verde.png" alt=""></a>
+  <a href="#topo" class="floatbar__logo" tabindex="-1"><img src="/assets/brand/simbolo-verde.png" alt=""></a>
   <nav class="floatbar__nav">
     <a href="#crm" tabindex="-1">CRM</a>
     <a href="#ia" tabindex="-1">Agentes de IA</a>
@@ -90,7 +90,7 @@ src="https://www.facebook.com/tr?id=1157603070025919&ev=PageView&noscript=1"
     <a href="#seguranca" tabindex="-1">Segurança</a>
     <a href="#faq" tabindex="-1">Dúvidas</a>
   </nav>
-  <a href="../form/" class="btn btn--dark btn--sm" tabindex="-1">Ver uma demonstração <svg><use href="#i-arrow"/></svg></a>
+  <a href="/form/" class="btn btn--dark btn--sm" tabindex="-1">Ver uma demonstração <svg><use href="#i-arrow"/></svg></a>
 </div>
 
 <div class="page" id="topo">
@@ -98,23 +98,23 @@ src="https://www.facebook.com/tr?id=1157603070025919&ev=PageView&noscript=1"
   <!-- HERO ------------------------------------------------------------ -->
   <header class="ahero">
     <div class="nav">
-      <a href="../" class="nav__logo"><img src="../assets/brand/logo-verde.png" alt="Valadares"></a>
+      <a href="/" class="nav__logo"><img src="/assets/brand/logo-verde.png" alt="Valadares"></a>
       <nav class="nav__links" id="navlinks">
-        <a href="../">Início</a>
+        <a href="/">Início</a>
         <a href="#topo" class="is-active">Astro</a>
         <a href="#crm">Recursos</a>
         <a href="#ia">Agentes de IA</a>
-        <a href="../form/">Contato</a>
+        <a href="/form/">Contato</a>
       </nav>
       <button class="nav__burger" id="burger" aria-label="Abrir menu" aria-expanded="false"><span></span><span></span></button>
     </div>
 
     <div class="ahero__copy">
-      <span class="product reveal"><img src="../assets/brand/astro-light.svg" alt="">Astro <i>·</i> o CRM da Valadares para clínicas</span>
+      <span class="product reveal"><img src="/assets/brand/astro-light.svg" alt="">Astro <i>·</i> o CRM da Valadares para clínicas</span>
       <h1 class="ahero__title reveal">Cada paciente que chega, atendido.<br><mark>Cada real investido, rastreado.</mark></h1>
       <p class="ahero__sub reveal">O Astro recebe o paciente interessado na hora em que ele chega, guarda de onde ele veio, cobra o primeiro contato no prazo e mostra quanto cada campanha virou de venda.</p>
       <div class="ahero__ctas reveal">
-        <a href="../form/" class="btn btn--dark">Agendar uma demonstração <svg><use href="#i-arrow"/></svg></a>
+        <a href="/form/" class="btn btn--dark">Agendar uma demonstração <svg><use href="#i-arrow"/></svg></a>
         <a href="#crm" class="btn btn--mint">Ver os recursos</a>
       </div>
     </div>
@@ -132,14 +132,14 @@ src="https://www.facebook.com/tr?id=1157603070025919&ev=PageView&noscript=1"
         <div class="browser browser--hero">
           <div class="browser__bar"><i></i><i></i><i></i><span>astro.valadares.co</span></div>
           <div class="browser__screen">
-            <img id="shot-0" role="tabpanel" aria-labelledby="tab-0" class="is-on" src="../assets/img/astro/dashboard.webp" width="1600" height="1000" alt="Painel do Astro com vendas do mês, leads, tempo médio até o primeiro contato e pacientes que precisam de atenção">
-            <img id="shot-1" role="tabpanel" aria-labelledby="tab-1" src="../assets/img/astro/pipeline.webp" width="1600" height="1000" alt="Funil de vendas do Astro com os cards dos pacientes por etapa" loading="lazy">
-            <img id="shot-2" role="tabpanel" aria-labelledby="tab-2" src="../assets/img/astro/agente-recepcao-conversa.webp" width="1600" height="1000" alt="Conversa no WhatsApp entre um paciente e a Lia, a recepcionista de IA" loading="lazy">
-            <img id="shot-3" role="tabpanel" aria-labelledby="tab-3" src="../assets/img/astro/relatorios.webp" width="1600" height="1000" alt="Relatório de campanhas do clique à venda" loading="lazy">
+            <img id="shot-0" role="tabpanel" aria-labelledby="tab-0" class="is-on" src="/assets/img/astro/dashboard.webp" width="1600" height="1000" alt="Painel do Astro com vendas do mês, leads, tempo médio até o primeiro contato e pacientes que precisam de atenção">
+            <img id="shot-1" role="tabpanel" aria-labelledby="tab-1" src="/assets/img/astro/pipeline.webp" width="1600" height="1000" alt="Funil de vendas do Astro com os cards dos pacientes por etapa" loading="lazy">
+            <img id="shot-2" role="tabpanel" aria-labelledby="tab-2" src="/assets/img/astro/agente-recepcao-conversa.webp" width="1600" height="1000" alt="Conversa no WhatsApp entre um paciente e a Lia, a recepcionista de IA" loading="lazy">
+            <img id="shot-3" role="tabpanel" aria-labelledby="tab-3" src="/assets/img/astro/relatorios.webp" width="1600" height="1000" alt="Relatório de campanhas do clique à venda" loading="lazy">
           </div>
         </div>
         <div class="phone phone--hero">
-          <img src="../assets/img/astro/celular-pipeline.webp" width="800" height="1731" alt="Funil do Astro no celular">
+          <img src="/assets/img/astro/celular-pipeline.webp" width="800" height="1731" alt="Funil do Astro no celular">
         </div>
       </div>
       <p class="shots__note">Telas reais do Astro. Nomes e valores de demonstração.</p>
@@ -216,7 +216,7 @@ src="https://www.facebook.com/tr?id=1157603070025919&ev=PageView&noscript=1"
       </div>
       <div class="browser">
         <div class="browser__bar"><i></i><i></i><i></i><span>astro.valadares.co</span></div>
-        <img src="../assets/img/astro/pipeline-lead.webp" width="1600" height="1000" alt="Ficha de uma paciente no Astro, com ações, temperatura, alerta de prazo, histórico e a origem com dados da campanha" loading="lazy">
+        <img src="/assets/img/astro/pipeline-lead.webp" width="1600" height="1000" alt="Ficha de uma paciente no Astro, com ações, temperatura, alerta de prazo, histórico e a origem com dados da campanha" loading="lazy">
       </div>
     </div>
 
@@ -233,7 +233,7 @@ src="https://www.facebook.com/tr?id=1157603070025919&ev=PageView&noscript=1"
       </div>
       <div class="browser">
         <div class="browser__bar"><i></i><i></i><i></i><span>astro.valadares.co</span></div>
-        <img src="../assets/img/astro/config-funil-sla.webp" width="1600" height="1000" alt="Configuração das etapas do funil, com prazo de primeiro contato de 5 minutos e horário comercial" loading="lazy">
+        <img src="/assets/img/astro/config-funil-sla.webp" width="1600" height="1000" alt="Configuração das etapas do funil, com prazo de primeiro contato de 5 minutos e horário comercial" loading="lazy">
       </div>
     </div>
 
@@ -250,7 +250,7 @@ src="https://www.facebook.com/tr?id=1157603070025919&ev=PageView&noscript=1"
       </div>
       <div class="browser">
         <div class="browser__bar"><i></i><i></i><i></i><span>astro.valadares.co</span></div>
-        <img src="../assets/img/astro/relatorios.webp" width="1600" height="1000" alt="Relatórios do Astro com leads, taxa de qualificação, conversão em venda, receita e campanhas do clique à venda" loading="lazy">
+        <img src="/assets/img/astro/relatorios.webp" width="1600" height="1000" alt="Relatórios do Astro com leads, taxa de qualificação, conversão em venda, receita e campanhas do clique à venda" loading="lazy">
       </div>
     </div>
 
@@ -284,7 +284,7 @@ src="https://www.facebook.com/tr?id=1157603070025919&ev=PageView&noscript=1"
 
       <div class="browser browser--dark reveal">
         <div class="browser__bar"><i></i><i></i><i></i><span>astro.valadares.co</span></div>
-        <img src="../assets/img/astro/escuro-agente-recepcao-conversa.webp" width="1600" height="1000" alt="Conversa da Lia, a recepcionista de IA, com um paciente no WhatsApp, e a ficha do lead ao lado com o botão de assumir a conversa" loading="lazy">
+        <img src="/assets/img/astro/escuro-agente-recepcao-conversa.webp" width="1600" height="1000" alt="Conversa da Lia, a recepcionista de IA, com um paciente no WhatsApp, e a ficha do lead ao lado com o botão de assumir a conversa" loading="lazy">
       </div>
 
       <div class="agents">
@@ -299,7 +299,7 @@ src="https://www.facebook.com/tr?id=1157603070025919&ev=PageView&noscript=1"
             <li><svg><use href="#i-check"/></svg>Quem chama vira lead no CRM, com o que procura e como conheceu a clínica</li>
             <li><svg><use href="#i-check"/></svg>Avisa a equipe no sino e no celular quando precisa de alguém</li>
           </ul>
-          <img src="../assets/img/astro/agente-recepcao-inicio.webp" width="1600" height="1000" alt="Início da IA de recepção, com desempenho e conversas esperando a equipe" loading="lazy">
+          <img src="/assets/img/astro/agente-recepcao-inicio.webp" width="1600" height="1000" alt="Início da IA de recepção, com desempenho e conversas esperando a equipe" loading="lazy">
         </article>
         <article class="agent reveal">
           <div class="agent__top">
@@ -312,7 +312,7 @@ src="https://www.facebook.com/tr?id=1157603070025919&ev=PageView&noscript=1"
             <li><svg><use href="#i-check"/></svg>Se quiser, nada sai sem o OK de alguém da equipe</li>
             <li><svg><use href="#i-check"/></svg>Resumo diário dos resultados</li>
           </ul>
-          <img src="../assets/img/astro/agente-vendas-listas.webp" width="1600" height="1000" alt="Listas de prospecção da IA de vendas, com os modos de disparo e as regras de envio" loading="lazy">
+          <img src="/assets/img/astro/agente-vendas-listas.webp" width="1600" height="1000" alt="Listas de prospecção da IA de vendas, com os modos de disparo e as regras de envio" loading="lazy">
         </article>
       </div>
 
@@ -340,10 +340,10 @@ src="https://www.facebook.com/tr?id=1157603070025919&ev=PageView&noscript=1"
       <div class="agenda__media">
         <div class="browser">
           <div class="browser__bar"><i></i><i></i><i></i><span>astro.valadares.co</span></div>
-          <img src="../assets/img/astro/agenda.webp" width="1600" height="1000" alt="Agenda semanal do Astro com três profissionais e os compromissos coloridos" loading="lazy">
+          <img src="/assets/img/astro/agenda.webp" width="1600" height="1000" alt="Agenda semanal do Astro com três profissionais e os compromissos coloridos" loading="lazy">
         </div>
         <div class="phone phone--sm">
-          <img src="../assets/img/astro/celular-agenda.webp" width="800" height="1731" alt="Agenda do Astro no celular" loading="lazy">
+          <img src="/assets/img/astro/celular-agenda.webp" width="800" height="1731" alt="Agenda do Astro no celular" loading="lazy">
         </div>
       </div>
     </div>
@@ -357,15 +357,15 @@ src="https://www.facebook.com/tr?id=1157603070025919&ev=PageView&noscript=1"
     </div>
     <div class="phones">
       <figure class="reveal">
-        <div class="phone"><img src="../assets/img/astro/celular-dashboard.webp" width="800" height="1731" alt="Painel do mês no celular" loading="lazy"></div>
+        <div class="phone"><img src="/assets/img/astro/celular-dashboard.webp" width="800" height="1731" alt="Painel do mês no celular" loading="lazy"></div>
         <figcaption><b>O mês na palma da mão</b>Vendas, contatos e quem precisa de atenção.</figcaption>
       </figure>
       <figure class="reveal">
-        <div class="phone"><img src="../assets/img/astro/celular-pipeline-lead.webp" width="800" height="1731" alt="Ficha de um paciente no celular" loading="lazy"></div>
+        <div class="phone"><img src="/assets/img/astro/celular-pipeline-lead.webp" width="800" height="1731" alt="Ficha de um paciente no celular" loading="lazy"></div>
         <figcaption><b>Ficha a um toque</b>WhatsApp, ligação, nota e próxima tarefa.</figcaption>
       </figure>
       <figure class="reveal">
-        <div class="phone"><img src="../assets/img/astro/celular-agente-recepcao-conversa.webp" width="800" height="1731" alt="Conversa da IA de recepção no celular" loading="lazy"></div>
+        <div class="phone"><img src="/assets/img/astro/celular-agente-recepcao-conversa.webp" width="800" height="1731" alt="Conversa da IA de recepção no celular" loading="lazy"></div>
         <figcaption><b>A IA no seu radar</b>Acompanhe e assuma a conversa de onde estiver.</figcaption>
       </figure>
     </div>
@@ -453,20 +453,20 @@ src="https://www.facebook.com/tr?id=1157603070025919&ev=PageView&noscript=1"
   <section class="section cta">
     <h2 class="cta__title reveal"><span class="dim">Nenhum paciente sem resposta.</span><br><mark>Nenhum real sem rastro.</mark></h2>
     <p class="cta__sub reveal">Em 30 minutos, mostramos o Astro funcionando com o funil de uma clínica como a sua.</p>
-    <a href="../form/" class="btn btn--dark reveal">Agendar uma demonstração <svg><use href="#i-arrow"/></svg></a>
+    <a href="/form/" class="btn btn--dark reveal">Agendar uma demonstração <svg><use href="#i-arrow"/></svg></a>
   </section>
 
   <!-- FOOTER ---------------------------------------------------------- -->
   <footer class="footer">
-    <img src="../assets/brand/logo-branco.png" alt="Valadares" class="footer__logo">
+    <img src="/assets/brand/logo-branco.png" alt="Valadares" class="footer__logo">
 
     <div class="footer__cols">
       <div>
         <h4>Navegação</h4>
-        <a href="../">Início</a>
+        <a href="/">Início</a>
         <a href="#topo">Astro</a>
         <a href="#crm">Recursos</a>
-        <a href="../form/">Contato</a>
+        <a href="/form/">Contato</a>
       </div>
       <div>
         <h4>Astro</h4>
@@ -475,7 +475,7 @@ src="https://www.facebook.com/tr?id=1157603070025919&ev=PageView&noscript=1"
         <a href="#faq">Dúvidas</a>
       </div>
       <div class="footer__cta">
-        <a href="../form/" class="btn btn--white btn--sm">Fale conosco</a>
+        <a href="/form/" class="btn btn--white btn--sm">Fale conosco</a>
         <p>Marketing e vendas para clínicas particulares. Do primeiro clique ao paciente que volta.</p>
       </div>
     </div>
@@ -488,6 +488,6 @@ src="https://www.facebook.com/tr?id=1157603070025919&ev=PageView&noscript=1"
 
 </div>
 
-<script src="astro.js?v=2"></script>
+<script src="/astro/astro.js?v=3"></script>
 </body>
 </html>
