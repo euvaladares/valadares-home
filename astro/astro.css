@@ -313,6 +313,10 @@
   border-radius: 14px 14px 0 0;
 }
 
+.agents--one { grid-template-columns: 1fr; }
+.agents--one .agent { display: grid; grid-template-columns: 1fr 1.1fr; gap: 40px; align-items: end; padding: 36px 0 0 36px; }
+.agents--one .agent__copy { padding-bottom: 36px; }
+.agents--one .agent img { margin-top: 0; }
 .ai__foot { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 12px; }
 .ai__foot > div {
   display: flex;
@@ -416,6 +420,8 @@
   .chips { justify-content: flex-start; }
   .ai .browser { margin-bottom: 32px; }
   .agent { padding: 24px 20px 0; }
+  .agents--one .agent { grid-template-columns: 1fr; gap: 24px; padding: 24px 20px 0; }
+  .agents--one .agent__copy { padding-bottom: 0; }
 
   .agenda { grid-template-columns: 1fr; }
   .agenda__media .phone { display: none; }

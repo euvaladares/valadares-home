@@ -42,7 +42,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300;400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/styles.css?v=13">
-  <link rel="stylesheet" href="/astro/astro.css?v=3">
+  <link rel="stylesheet" href="/astro/astro.css?v=4">
 </head>
 <body>
 <noscript><img height="1" width="1" style="display:none" alt=""
@@ -85,7 +85,7 @@ src="https://www.facebook.com/tr?id=1157603070025919&ev=PageView&noscript=1"
   <a href="#topo" class="floatbar__logo" tabindex="-1"><img src="/assets/brand/simbolo-verde.png" alt=""></a>
   <nav class="floatbar__nav">
     <a href="#crm" tabindex="-1">CRM</a>
-    <a href="#ia" tabindex="-1">Agentes de IA</a>
+    <a href="#ia" tabindex="-1">Atendente de IA</a>
     <a href="#agenda" tabindex="-1">Agenda</a>
     <a href="#seguranca" tabindex="-1">Segurança</a>
     <a href="#faq" tabindex="-1">Dúvidas</a>
@@ -103,7 +103,7 @@ src="https://www.facebook.com/tr?id=1157603070025919&ev=PageView&noscript=1"
         <a href="/">Início</a>
         <a href="#topo" class="is-active">Astro</a>
         <a href="#crm">Recursos</a>
-        <a href="#ia">Agentes de IA</a>
+        <a href="#ia">Atendente de IA</a>
         <a href="/form/">Contato</a>
       </nav>
       <button class="nav__burger" id="burger" aria-label="Abrir menu" aria-expanded="false"><span></span><span></span></button>
@@ -267,13 +267,13 @@ src="https://www.facebook.com/tr?id=1157603070025919&ev=PageView&noscript=1"
     </div>
   </section>
 
-  <!-- AGENTES DE IA --------------------------------------------------- -->
+  <!-- ATENDENTE DE IA ------------------------------------------------- -->
   <section class="section" id="ia">
     <div class="ai">
       <div class="ai__head">
-        <span class="ai__eyebrow reveal"><svg><use href="#i-spark"/></svg>Agentes de IA no WhatsApp</span>
+        <span class="ai__eyebrow reveal"><svg><use href="#i-spark"/></svg>Atendente de IA no WhatsApp</span>
         <h2 class="h2 reveal">Uma recepção que responde a qualquer hora. <br>E sabe quando chamar você.</h2>
-        <p class="reveal">Os agentes conversam como gente, com o que a clínica ensinou, e passam a conversa para a equipe com um resumo quando é a vez de um humano.</p>
+        <p class="reveal">A atendente conversa como gente, com o que a clínica ensinou, e passa a conversa para a equipe com um resumo quando é a vez de um humano.</p>
         <div class="chips reveal">
           <span>Tira dúvidas de convênio e pagamento</span>
           <span>Marca a consulta na agenda</span>
@@ -287,11 +287,12 @@ src="https://www.facebook.com/tr?id=1157603070025919&ev=PageView&noscript=1"
         <img src="/assets/img/astro/escuro-agente-recepcao-conversa.webp" width="1600" height="1000" alt="Conversa da Lia, a recepcionista de IA, com um paciente no WhatsApp, e a ficha do lead ao lado com o botão de assumir a conversa" loading="lazy">
       </div>
 
-      <div class="agents">
+      <div class="agents agents--one">
         <article class="agent reveal">
+          <div class="agent__copy">
           <div class="agent__top">
             <span class="agent__av">L</span>
-            <div><b>Recepção</b><small>Atende quem chama. No demo, a Lia.</small></div>
+            <div><b>Atendente de IA</b><small>Atende quem chama, a qualquer hora. No demo, a Lia.</small></div>
           </div>
           <ul class="ticks ticks--light">
             <li><svg><use href="#i-check"/></svg>Responde convênios, formas de pagamento, endereço, estacionamento e procedimentos</li>
@@ -299,20 +300,8 @@ src="https://www.facebook.com/tr?id=1157603070025919&ev=PageView&noscript=1"
             <li><svg><use href="#i-check"/></svg>Quem chama vira lead no CRM, com o que procura e como conheceu a clínica</li>
             <li><svg><use href="#i-check"/></svg>Avisa a equipe no sino e no celular quando precisa de alguém</li>
           </ul>
-          <img src="/assets/img/astro/agente-recepcao-inicio.webp" width="1600" height="1000" alt="Início da IA de recepção, com desempenho e conversas esperando a equipe" loading="lazy">
-        </article>
-        <article class="agent reveal">
-          <div class="agent__top">
-            <span class="agent__av agent__av--b">B</span>
-            <div><b>Vendas</b><small>Chama quem está na sua lista. No demo, a Bianca.</small></div>
           </div>
-          <ul class="ticks ticks--light">
-            <li><svg><use href="#i-check"/></svg>Conversa com os contatos de uma planilha até o interessado estar pronto para a equipe</li>
-            <li><svg><use href="#i-check"/></svg>Três modos: desligado, ensaio (escolhe quem chamar sem enviar) e ligado</li>
-            <li><svg><use href="#i-check"/></svg>Se quiser, nada sai sem o OK de alguém da equipe</li>
-            <li><svg><use href="#i-check"/></svg>Resumo diário dos resultados</li>
-          </ul>
-          <img src="/assets/img/astro/agente-vendas-listas.webp" width="1600" height="1000" alt="Listas de prospecção da IA de vendas, com os modos de disparo e as regras de envio" loading="lazy">
+          <img src="/assets/img/astro/agente-recepcao-inicio.webp" width="1600" height="1000" alt="Início da IA de recepção, com desempenho e conversas esperando a equipe" loading="lazy">
         </article>
       </div>
 
@@ -320,7 +309,7 @@ src="https://www.facebook.com/tr?id=1157603070025919&ev=PageView&noscript=1"
         <div class="reveal"><svg><use href="#i-book"/></svg><p><b>A clínica ensina, a IA aprende.</b> Textos, abordagens e respostas fixas editáveis, com histórico de versões para voltar atrás.</p></div>
         <div class="reveal"><svg><use href="#i-hand"/></svg><p><b>A equipe acompanha ao vivo.</b> Pode assumir, devolver para a IA, anotar e finalizar. O vendedor vê só as conversas dos pacientes dele.</p></div>
       </div>
-      <p class="ai__note">Os nomes dos agentes são escolhidos pela clínica.</p>
+      <p class="ai__note">O nome da atendente é escolhido pela clínica.</p>
     </div>
   </section>
 
@@ -382,7 +371,7 @@ src="https://www.facebook.com/tr?id=1157603070025919&ev=PageView&noscript=1"
       <div class="perk reveal"><span>03</span><h3>Primeiro contato rápido</h3><p>Aviso na hora, prazo visível e card vermelho. Ninguém esquece ninguém.</p></div>
       <div class="perk reveal"><span>04</span><h3>IA com a equipe, não no lugar dela</h3><p>A equipe vê tudo, assume quando quer e recebe a conversa com resumo.</p></div>
       <div class="perk reveal"><span>05</span><h3>Funciona no celular</h3><p>Instalado na tela inicial, com notificações. Nada para baixar da loja.</p></div>
-      <div class="perk reveal"><span>06</span><h3>Implantado pela Valadares</h3><p>Configuramos fontes, funil, agentes e agenda com você, e treinamos a secretária.</p></div>
+      <div class="perk reveal"><span>06</span><h3>Implantado pela Valadares</h3><p>Configuramos fontes, funil, atendente de IA e agenda com você, e treinamos a secretária.</p></div>
     </div>
   </section>
 
@@ -423,7 +412,7 @@ src="https://www.facebook.com/tr?id=1157603070025919&ev=PageView&noscript=1"
         </details>
         <details class="qa reveal">
           <summary>A IA responde sozinha sem eu ver?</summary>
-          <p>Você acompanha cada conversa ao vivo. Pode assumir, devolver e anotar, e a IA passa para a equipe com um resumo quando é a vez de um humano. No agente de vendas, dá para exigir aprovação antes de cada envio.</p>
+          <p>Você acompanha cada conversa ao vivo. Pode assumir, devolver e anotar, e a IA passa para a equipe com um resumo quando é a vez de um humano.</p>
         </details>
         <details class="qa reveal">
           <summary>A IA marca consulta?</summary>
@@ -443,7 +432,7 @@ src="https://www.facebook.com/tr?id=1157603070025919&ev=PageView&noscript=1"
         </details>
         <details class="qa reveal">
           <summary>Quem configura?</summary>
-          <p>A equipe da Valadares implanta com você: fontes de contato, funil, prazos, agenda e agentes. E treina a secretária para usar no dia a dia.</p>
+          <p>A equipe da Valadares implanta com você: fontes de contato, funil, prazos, agenda e atendente de IA. E treina a secretária para usar no dia a dia.</p>
         </details>
       </div>
     </div>
@@ -470,7 +459,7 @@ src="https://www.facebook.com/tr?id=1157603070025919&ev=PageView&noscript=1"
       </div>
       <div>
         <h4>Astro</h4>
-        <a href="#ia">Agentes de IA</a>
+        <a href="#ia">Atendente de IA</a>
         <a href="#seguranca">Segurança</a>
         <a href="#faq">Dúvidas</a>
       </div>
