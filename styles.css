@@ -197,6 +197,9 @@ mark {
   transition: transform .5s var(--ease), opacity .3s;
 }
 .floatbar.is-on { transform: translate(-50%, 0); opacity: 1; }
+/* Com left: 50% a barra só teria meia tela de largura; no celular o botão espremia o logo até sumir. */
+.floatbar { width: max-content; }
+.floatbar__logo { flex: none; }
 .floatbar__logo img { width: 34px; height: 34px; }
 .floatbar__nav { display: flex; gap: 22px; font-size: 14px; }
 .floatbar__nav a { opacity: .75; transition: opacity .2s; }
