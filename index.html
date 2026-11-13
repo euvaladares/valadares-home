@@ -157,27 +157,36 @@
   <!-- Astro CRM -->
   <script src="https://astro.valadares.co/astro.js" data-source="src_f5cb68f1d1864bdbbae436220d61ed85" async></script>
 
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-8D3XC46DVR"></script>
+  <!-- Google tag (gtag.js) e Meta Pixel -->
+  <!-- As chamadas entram na fila na hora; os scripts só baixam depois que a página abre
+       (ou na primeira interação), para não disputar banda com o conteúdo do topo. -->
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'G-8D3XC46DVR');
-  </script>
 
-  <!-- Meta Pixel Code -->
-  <script>
-  !function(f,b,e,v,n,t,s)
-  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-  n.queue=[];t=b.createElement(e);t.async=!0;
-  t.src=v;s=b.getElementsByTagName(e)[0];
-  s.parentNode.insertBefore(t,s)}(window, document,'script',
-  'https://connect.facebook.net/en_US/fbevents.js');
-  fbq('init', '1157603070025919');
-  fbq('track', 'PageView');
+    !function(f){if(f.fbq)return;var n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];}(window);
+    fbq('init', '1157603070025919');
+    fbq('track', 'PageView');
+
+    (function () {
+      var done = false;
+      function add(src) { var s = document.createElement('script'); s.async = true; s.src = src; document.head.appendChild(s); }
+      function load() {
+        if (done) return;
+        done = true;
+        add('https://www.googletagmanager.com/gtag/js?id=G-8D3XC46DVR');
+        add('https://connect.facebook.net/en_US/fbevents.js');
+      }
+      if (document.readyState === 'complete') setTimeout(load, 0);
+      else window.addEventListener('load', function () { setTimeout(load, 0); });
+      ['pointerdown', 'keydown', 'touchstart', 'scroll'].forEach(function (e) {
+        window.addEventListener(e, load, { once: true, passive: true });
+      });
+    })();
   </script>
   <!-- End Meta Pixel Code -->
 

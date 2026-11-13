@@ -143,27 +143,36 @@
   <!-- Astro CRM -->
   <script src="https://astro.valadares.co/astro.js" data-source="src_f5cb68f1d1864bdbbae436220d61ed85" async></script>
 
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-8D3XC46DVR"></script>
+  <!-- Google tag (gtag.js) e Meta Pixel -->
+  <!-- As chamadas entram na fila na hora; os scripts só baixam depois que a página abre
+       (ou na primeira interação), para não disputar banda com o conteúdo do topo. -->
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'G-8D3XC46DVR');
-  </script>
 
-  <!-- Meta Pixel Code -->
-  <script>
-  !function(f,b,e,v,n,t,s)
-  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-  n.queue=[];t=b.createElement(e);t.async=!0;
-  t.src=v;s=b.getElementsByTagName(e)[0];
-  s.parentNode.insertBefore(t,s)}(window, document,'script',
-  'https://connect.facebook.net/en_US/fbevents.js');
-  fbq('init', '1157603070025919');
-  fbq('track', 'PageView');
+    !function(f){if(f.fbq)return;var n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];}(window);
+    fbq('init', '1157603070025919');
+    fbq('track', 'PageView');
+
+    (function () {
+      var done = false;
+      function add(src) { var s = document.createElement('script'); s.async = true; s.src = src; document.head.appendChild(s); }
+      function load() {
+        if (done) return;
+        done = true;
+        add('https://www.googletagmanager.com/gtag/js?id=G-8D3XC46DVR');
+        add('https://connect.facebook.net/en_US/fbevents.js');
+      }
+      if (document.readyState === 'complete') setTimeout(load, 0);
+      else window.addEventListener('load', function () { setTimeout(load, 0); });
+      ['pointerdown', 'keydown', 'touchstart', 'scroll'].forEach(function (e) {
+        window.addEventListener(e, load, { once: true, passive: true });
+      });
+    })();
   </script>
   <!-- End Meta Pixel Code -->
 
@@ -249,10 +258,10 @@ src="https://www.facebook.com/tr?id=1157603070025919&ev=PageView&noscript=1"
         <div class="browser browser--hero">
           <div class="browser__bar"><i></i><i></i><i></i><span>astro.valadares.co</span></div>
           <div class="browser__screen">
-            <img id="shot-0" role="tabpanel" aria-labelledby="tab-0" class="is-on" src="/assets/img/astro/dashboard-800.webp" srcset="/assets/img/astro/dashboard-800.webp 800w, /assets/img/astro/dashboard.webp 1600w" sizes="(max-width: 900px) 100vw, 1100px" width="1600" height="1000" fetchpriority="high" alt="Painel do Astro com as vendas do mês, os pacientes novos e o tempo de resposta da equipe">
-            <img id="shot-1" role="tabpanel" aria-labelledby="tab-1" data-src="/assets/img/astro/pipeline-800.webp" data-srcset="/assets/img/astro/pipeline-800.webp 800w, /assets/img/astro/pipeline.webp 1600w" sizes="(max-width: 900px) 100vw, 1100px" width="1600" height="1000" alt="Pacientes em andamento no Astro, organizados por etapa até a consulta">
-            <img id="shot-2" role="tabpanel" aria-labelledby="tab-2" data-src="/assets/img/astro/agente-recepcao-conversa-800.webp" data-srcset="/assets/img/astro/agente-recepcao-conversa-800.webp 800w, /assets/img/astro/agente-recepcao-conversa.webp 1600w" sizes="(max-width: 900px) 100vw, 1100px" width="1600" height="1000" alt="Conversa no WhatsApp entre um paciente e a atendente de IA do Astro">
-            <img id="shot-3" role="tabpanel" aria-labelledby="tab-3" data-src="/assets/img/astro/relatorios-800.webp" data-srcset="/assets/img/astro/relatorios-800.webp 800w, /assets/img/astro/relatorios.webp 1600w" sizes="(max-width: 900px) 100vw, 1100px" width="1600" height="1000" alt="Relatório do Astro com quanto cada anúncio trouxe de pacientes e faturamento">
+            <img id="shot-0" class="is-on" src="/assets/img/astro/dashboard-800.webp" srcset="/assets/img/astro/dashboard-600.webp 600w, /assets/img/astro/dashboard-800.webp 800w, /assets/img/astro/dashboard.webp 1600w" sizes="(max-width: 900px) calc(100vw - 72px), 1100px" width="1600" height="1000" fetchpriority="high" alt="Painel do Astro com as vendas do mês, os pacientes novos e o tempo de resposta da equipe">
+            <img id="shot-1" data-src="/assets/img/astro/pipeline-800.webp" data-srcset="/assets/img/astro/pipeline-600.webp 600w, /assets/img/astro/pipeline-800.webp 800w, /assets/img/astro/pipeline.webp 1600w" sizes="(max-width: 900px) calc(100vw - 72px), 1100px" width="1600" height="1000" alt="Pacientes em andamento no Astro, organizados por etapa até a consulta">
+            <img id="shot-2" data-src="/assets/img/astro/agente-recepcao-conversa-800.webp" data-srcset="/assets/img/astro/agente-recepcao-conversa-600.webp 600w, /assets/img/astro/agente-recepcao-conversa-800.webp 800w, /assets/img/astro/agente-recepcao-conversa.webp 1600w" sizes="(max-width: 900px) calc(100vw - 72px), 1100px" width="1600" height="1000" alt="Conversa no WhatsApp entre um paciente e a atendente de IA do Astro">
+            <img id="shot-3" data-src="/assets/img/astro/relatorios-800.webp" data-srcset="/assets/img/astro/relatorios-600.webp 600w, /assets/img/astro/relatorios-800.webp 800w, /assets/img/astro/relatorios.webp 1600w" sizes="(max-width: 900px) calc(100vw - 72px), 1100px" width="1600" height="1000" alt="Relatório do Astro com quanto cada anúncio trouxe de pacientes e faturamento">
           </div>
         </div>
         <div class="phone phone--hero">
@@ -393,7 +402,7 @@ src="https://www.facebook.com/tr?id=1157603070025919&ev=PageView&noscript=1"
       </div>
       <div class="browser">
         <div class="browser__bar"><i></i><i></i><i></i><span>astro.valadares.co</span></div>
-        <img src="/assets/img/astro/relatorios-800.webp" srcset="/assets/img/astro/relatorios-800.webp 800w, /assets/img/astro/relatorios.webp 1600w" sizes="(max-width: 900px) 100vw, 700px" width="1600" height="1000" alt="Relatório do Astro com pacientes, vendas e faturamento por anúncio" loading="lazy">
+        <img src="/assets/img/astro/relatorios-800.webp" srcset="/assets/img/astro/relatorios-600.webp 600w, /assets/img/astro/relatorios-800.webp 800w, /assets/img/astro/relatorios.webp 1600w" sizes="(max-width: 900px) 100vw, 700px" width="1600" height="1000" alt="Relatório do Astro com pacientes, vendas e faturamento por anúncio" loading="lazy">
       </div>
     </div>
   </section>
@@ -571,6 +580,6 @@ src="https://www.facebook.com/tr?id=1157603070025919&ev=PageView&noscript=1"
 
 </div>
 
-<script src="/astro/astro.js?v=4"></script>
+<script src="/astro/astro.js?v=5"></script>
 </body>
 </html>
