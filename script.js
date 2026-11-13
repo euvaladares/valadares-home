@@ -141,11 +141,11 @@
 
   // Jornada da Ana ------------------------------------------------------
   var STEPS = [
-    { t: "O anúncio", d: "A Ana procura há meses um tratamento para manchas. Um anúncio da sua clínica aparece no Instagram falando exatamente disso. Feito para ela.", img: "paciente-celular.jpg", l: "Frente: Marketing" },
-    { t: "O site", d: "Ela clica e cai numa página que tira as dúvidas. Deixa o contato, que chega no Astro já dizendo qual anúncio a trouxe.", img: "mao-celular.jpg", l: "Frente: Sites" },
-    { t: "O atendimento", d: "Ana manda mensagem às 22h. A atendente de IA responde na hora, tira as dúvidas e marca a avaliação. De manhã, a recepção já tem o resumo.", img: "recepcao.jpg", l: "Frente: Atendente de IA" },
-    { t: "A venda", d: "A Ana fecha o procedimento e o valor fica registrado no Astro. A venda volta para o Meta, que passa a buscar mais pacientes como ela.", img: "clinica-branca.jpg", l: "Frente: Integrações" },
-    { t: "O retorno", d: "Meses depois, o Astro avisa que é hora da revisão. A Ana volta, e o relatório mostra quanto ela já rendeu desde o primeiro anúncio.", img: "paciente-sorriso.jpg", l: "Frente: CRM" }
+    { t: "O anúncio", d: "A Ana procura há meses um tratamento para manchas. Um anúncio da sua clínica aparece no Instagram falando exatamente disso. Feito para ela.", img: "paciente-celular-1000.webp", l: "Frente: Marketing" },
+    { t: "O site", d: "Ela clica e cai numa página que tira as dúvidas. Deixa o contato, que chega no Astro já dizendo qual anúncio a trouxe.", img: "mao-celular-1000.webp", l: "Frente: Sites" },
+    { t: "O atendimento", d: "Ana manda mensagem às 22h. A atendente de IA responde na hora, tira as dúvidas e marca a avaliação. De manhã, a recepção já tem o resumo.", img: "recepcao-1000.webp", l: "Frente: Atendente de IA" },
+    { t: "A venda", d: "A Ana fecha o procedimento e o valor fica registrado no Astro. A venda volta para o Meta, que passa a buscar mais pacientes como ela.", img: "clinica-branca-1000.webp", l: "Frente: Integrações" },
+    { t: "O retorno", d: "Meses depois, o Astro avisa que é hora da revisão. A Ana volta, e o relatório mostra quanto ela já rendeu desde o primeiro anúncio.", img: "paciente-sorriso-1000.webp", l: "Frente: CRM" }
   ];
 
   var stepsEl = document.querySelector(".steps");
@@ -159,8 +159,10 @@
   var buttons = [];
   var lines = [];
 
-  // Pré-carrega as fotos da jornada
-  STEPS.forEach(function (s) { var i = new Image(); i.src = "assets/img/" + s.img; });
+  // Pré-carrega as fotos da jornada só depois da página pronta, para não disputar banda com o hero.
+  function preloadJourney() { STEPS.forEach(function (s) { var i = new Image(); i.src = "assets/img/" + s.img; }); }
+  if (document.readyState === "complete") preloadJourney();
+  else window.addEventListener("load", preloadJourney);
 
   STEPS.forEach(function (s, i) {
     if (i > 0) {

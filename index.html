@@ -183,8 +183,10 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=14">
+  <!-- A fonte carrega sem travar a página: o texto aparece na hora e troca quando ela chega. -->
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300;400;500;600&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300;400;500;600&display=swap"></noscript>
+  <link rel="stylesheet" href="styles.css?v=15">
 </head>
 <body>
 <noscript><img height="1" width="1" style="display:none" alt=""
@@ -222,7 +224,7 @@ src="https://www.facebook.com/tr?id=1157603070025919&ev=PageView&noscript=1"
 
 <!-- Barra fixa que aparece ao rolar -->
 <div class="floatbar" id="floatbar" aria-hidden="true">
-  <a href="#topo" class="floatbar__logo" tabindex="-1"><img src="assets/brand/simbolo-verde.png" alt=""></a>
+  <a href="#topo" class="floatbar__logo" tabindex="-1"><img src="assets/brand/simbolo-verde-96.webp" width="34" height="34" alt=""></a>
   <nav class="floatbar__nav">
     <a href="#sistema" tabindex="-1">Sistema</a>
     <a href="#jornada" tabindex="-1">Como funciona</a>
@@ -239,7 +241,7 @@ src="https://www.facebook.com/tr?id=1157603070025919&ev=PageView&noscript=1"
   <header class="hero">
     <div class="hero__left">
       <div class="nav">
-        <a href="#topo" class="nav__logo"><img src="assets/brand/logo-verde.png" alt="Valadares"></a>
+        <a href="#topo" class="nav__logo"><img src="assets/brand/logo-verde-400.webp" width="161" height="33" alt="Valadares"></a>
         <nav class="nav__links" id="navlinks">
           <a href="#topo" class="is-active nav__home">Início</a>
           <a href="#sistema">Sistema</a>
@@ -262,10 +264,10 @@ src="https://www.facebook.com/tr?id=1157603070025919&ev=PageView&noscript=1"
       <div class="hero__foot reveal">
         <div class="proof">
           <div class="proof__faces">
-            <img src="assets/img/medica-retrato.jpg" alt="">
-            <img src="assets/img/medico-retrato.jpg" alt="">
-            <img src="assets/img/medica-sorriso.jpg" alt="">
-            <img src="assets/img/medico-sorriso.jpg" alt="">
+            <img src="assets/img/medica-retrato-120.webp" width="44" height="44" alt="">
+            <img src="assets/img/medico-retrato-120.webp" width="44" height="44" alt="">
+            <img src="assets/img/medica-sorriso-120.webp" width="44" height="44" alt="">
+            <img src="assets/img/medico-sorriso-120.webp" width="44" height="44" alt="">
           </div>
           <div>
             <strong>Um sistema do anúncio à venda</strong>
@@ -277,13 +279,13 @@ src="https://www.facebook.com/tr?id=1157603070025919&ev=PageView&noscript=1"
     </div>
 
     <div class="hero__media">
-      <img src="assets/img/medica-consultorio.jpg" alt="Médica atendendo em consultório" class="hero__img">
+      <img src="assets/img/hero-1400.webp" srcset="assets/img/hero-800.webp 800w, assets/img/hero-1400.webp 1400w" sizes="(max-width: 900px) 100vw, 50vw" width="1400" height="787" fetchpriority="high" alt="Médica atendendo em consultório" class="hero__img">
       <div class="hero__top">
         <a href="form/" class="btn btn--mint btn--sm">Fale com o time <svg><use href="#i-arrow"/></svg></a>
       </div>
       <div class="hero__cards">
         <div class="mini float-a">
-          <img src="assets/img/mulher-celular.jpg" alt="">
+          <img src="assets/img/mulher-celular-240.webp" width="240" height="360" alt="">
           <div>
             <b>Novo lead · Ana</b>
             <span>Origem: Instagram Ads</span>
@@ -297,6 +299,8 @@ src="https://www.facebook.com/tr?id=1157603070025919&ev=PageView&noscript=1"
       </div>
     </div>
   </header>
+
+  <main>
 
   <!-- SISTEMA / FUNIL ----------------------------------------------- -->
   <section class="section" id="sistema">
@@ -329,10 +333,10 @@ src="https://www.facebook.com/tr?id=1157603070025919&ev=PageView&noscript=1"
 
           <div class="fcard fad" id="f-ad">
             <div class="fad__head">
-              <span class="fad__logo"><img src="assets/brand/simbolo-verde.png" alt=""></span>
+              <span class="fad__logo"><img src="assets/brand/simbolo-verde-96.webp" width="17" height="17" alt="" loading="lazy"></span>
               <div><b>Clínica Aurora</b><small>Patrocinado</small></div>
             </div>
-            <img src="assets/img/sorriso-close.jpg" alt="" class="fad__img" loading="lazy">
+            <img src="assets/img/sorriso-close-700.webp" width="700" height="1051" alt="" class="fad__img" loading="lazy">
             <div class="fad__cta">Agendar avaliação <svg><use href="#i-arrow"/></svg></div>
           </div>
         </div>
@@ -352,7 +356,7 @@ src="https://www.facebook.com/tr?id=1157603070025919&ev=PageView&noscript=1"
             <div class="fphone__field"><small>WhatsApp</small><span>(11) 9••••-••21</span></div>
             <div class="fphone__btn">Agendar avaliação</div>
             <div class="fphone__track">
-              <span class="pulse"><span></span><span></span><img src="assets/brand/simbolo-verde.png" alt=""></span>
+              <span class="pulse"><span></span><span></span><img src="assets/brand/simbolo-verde-96.webp" width="24" height="24" alt="" loading="lazy"></span>
               <p><b>Origem registrada</b>Instagram Ads · campanha #12</p>
             </div>
           </div>
@@ -366,7 +370,7 @@ src="https://www.facebook.com/tr?id=1157603070025919&ev=PageView&noscript=1"
           <div class="fcard" id="f-lead">
             <div class="fcard__head"><b>Novo lead</b><span class="fcard__ico"><svg><use href="#i-chat"/></svg></span></div>
             <div class="flead">
-              <img src="assets/img/mulher-celular.jpg" alt="">
+              <img src="assets/img/mulher-celular-240.webp" width="36" height="36" alt="" loading="lazy">
               <div><b>Ana Ribeiro</b><small>via Instagram Ads</small></div>
             </div>
             <p class="fbubble">Olá! Quero agendar uma avaliação.</p>
@@ -418,7 +422,7 @@ src="https://www.facebook.com/tr?id=1157603070025919&ev=PageView&noscript=1"
         </ul>
       </div>
       <div class="soft__media">
-        <img src="assets/img/time-2.jpg" alt="Time analisando resultados no notebook" loading="lazy">
+        <img src="assets/img/time-2-1000.webp" srcset="assets/img/time-2-600.webp 600w, assets/img/time-2-1000.webp 1000w" sizes="(max-width: 900px) 100vw, 560px" width="1000" height="667" alt="Time analisando resultados no notebook" loading="lazy">
         <div class="mini mini--stack soft__f1">
           <div class="channels"><i title="Meta"><svg><use href="#l-meta"/></svg></i><i title="Google"><svg><use href="#l-google"/></svg></i><i title="TikTok"><svg><use href="#l-tiktok"/></svg></i></div>
           <b>Meta, Google e TikTok integrados ao Astro</b>
@@ -467,10 +471,10 @@ src="https://www.facebook.com/tr?id=1157603070025919&ev=PageView&noscript=1"
       <div class="astro-cta__media">
         <div class="mock">
           <div class="mock__bar"><i></i><i></i><i></i></div>
-          <img src="assets/img/astro/dashboard.webp" width="1600" height="1000" alt="Painel do Astro com vendas do mês, leads e tempo até o primeiro contato" loading="lazy">
+          <img src="assets/img/astro/dashboard-800.webp" srcset="assets/img/astro/dashboard-800.webp 800w, assets/img/astro/dashboard.webp 1600w" sizes="(max-width: 900px) 100vw, 640px" width="1600" height="1000" alt="Painel do Astro com vendas do mês, leads e tempo até o primeiro contato" loading="lazy">
         </div>
         <div class="mock-phone">
-          <img src="assets/img/astro/celular-agente-recepcao-conversa.webp" width="800" height="1731" alt="Conversa da atendente de IA no celular" loading="lazy">
+          <img src="assets/img/astro/celular-agente-recepcao-conversa-500.webp" width="500" height="1083" alt="Conversa da atendente de IA no celular" loading="lazy">
         </div>
       </div>
     </div>
@@ -502,7 +506,7 @@ src="https://www.facebook.com/tr?id=1157603070025919&ev=PageView&noscript=1"
           </div>
         </div>
         <div class="journey__media">
-          <img id="jimg" src="assets/img/paciente-celular.jpg" alt="">
+          <img id="jimg" src="assets/img/paciente-celular-1000.webp" width="1000" height="1334" alt="" loading="lazy">
           <span class="label" id="jlabel">Frente: Marketing</span>
         </div>
       </div>
@@ -541,8 +545,8 @@ src="https://www.facebook.com/tr?id=1157603070025919&ev=PageView&noscript=1"
         </dl>
       </article>
       <article class="cmp cmp--us reveal">
-        <img src="assets/brand/simbolo-branco.png" alt="" class="deco">
-        <h3><img src="assets/brand/logo-branco.png" alt="Valadares"></h3>
+        <img src="assets/brand/simbolo-branco-640.webp" width="320" height="320" alt="" class="deco" loading="lazy">
+        <h3><img src="assets/brand/logo-branco-300.webp" width="98" height="20" alt="Valadares" loading="lazy"></h3>
         <dl>
           <dt>Responsabilidade</dt><dd>Do anúncio à recompra</dd>
           <dt>Site</dt><dd>Feito em casa, 100% rastreado</dd>
@@ -645,13 +649,15 @@ src="https://www.facebook.com/tr?id=1157603070025919&ev=PageView&noscript=1"
     <a href="form/" class="btn btn--dark reveal">Quero vender mais <svg><use href="#i-arrow"/></svg></a>
   </section>
 
+  </main>
+
   <!-- FOOTER ---------------------------------------------------------- -->
   <footer class="footer">
-    <img src="assets/brand/logo-branco.png" alt="Valadares" class="footer__logo">
+    <img src="assets/brand/logo-branco-1600.webp" width="1600" height="327" alt="Valadares" class="footer__logo" loading="lazy">
 
     <div class="footer__cols">
       <div>
-        <h4>Navegação</h4>
+        <h3>Navegação</h3>
         <a href="#topo">Início</a>
         <a href="#sistema">Sistema</a>
         <a href="#jornada">Como funciona</a>
@@ -659,7 +665,7 @@ src="https://www.facebook.com/tr?id=1157603070025919&ev=PageView&noscript=1"
         <a href="form/">Contato</a>
       </div>
       <div>
-        <h4>Recursos</h4>
+        <h3>Recursos</h3>
         <a href="#diferenciais">Diferenciais</a>
         <a href="#faq">Dúvidas</a>
         <a href="#">Política de privacidade</a>
@@ -678,6 +684,6 @@ src="https://www.facebook.com/tr?id=1157603070025919&ev=PageView&noscript=1"
 
 </div>
 
-<script src="script.js?v=13"></script>
+<script src="script.js?v=14"></script>
 </body>
 </html>

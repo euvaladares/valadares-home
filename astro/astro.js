@@ -55,8 +55,19 @@
   var tabs = [].slice.call(document.querySelectorAll(".tab"));
   var shots = tabs.map(function (t) { return document.getElementById(t.getAttribute("aria-controls")); });
   var curTab = 0;
+  // As telas das outras abas só baixam depois da página pronta, para não atrasar a primeira.
+  function loadShot(img) {
+    if (!img.dataset.src) return;
+    img.srcset = img.dataset.srcset;
+    img.src = img.dataset.src;
+    delete img.dataset.src;
+    delete img.dataset.srcset;
+  }
+  if (document.readyState === "complete") shots.forEach(loadShot);
+  else window.addEventListener("load", function () { shots.forEach(loadShot); });
   function showTab(i, focus) {
     curTab = (i + tabs.length) % tabs.length;
+    loadShot(shots[curTab]);
     tabs.forEach(function (t, n) {
       var on = n === curTab;
       t.classList.toggle("is-active", on);

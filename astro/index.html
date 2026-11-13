@@ -169,9 +169,11 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/styles.css?v=14">
-  <link rel="stylesheet" href="/astro/astro.css?v=6">
+  <!-- A fonte carrega sem travar a página: o texto aparece na hora e troca quando ela chega. -->
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300;400;500;600&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300;400;500;600&display=swap"></noscript>
+  <link rel="stylesheet" href="/styles.css?v=15">
+  <link rel="stylesheet" href="/astro/astro.css?v=7">
 </head>
 <body>
 <noscript><img height="1" width="1" style="display:none" alt=""
@@ -214,7 +216,7 @@ src="https://www.facebook.com/tr?id=1157603070025919&ev=PageView&noscript=1"
   <!-- HERO ------------------------------------------------------------ -->
   <header class="ahero">
     <div class="nav">
-      <a href="/" class="nav__logo"><img src="/assets/brand/logo-verde.png" alt="Valadares"></a>
+      <a href="/" class="nav__logo"><img src="/assets/brand/logo-verde-400.webp" width="161" height="33" alt="Valadares"></a>
       <nav class="nav__links" id="navlinks">
         <a href="/">Início</a>
         <a href="#topo" class="is-active">Astro</a>
@@ -226,16 +228,16 @@ src="https://www.facebook.com/tr?id=1157603070025919&ev=PageView&noscript=1"
     </div>
 
     <div class="ahero__copy">
-      <span class="product reveal"><img src="/assets/brand/astro-light.svg" alt="">Astro <i>·</i> para clínicas e consultórios</span>
-      <h1 class="ahero__title reveal">Cada paciente atendido.<br><mark>Cada real rastreado.</mark></h1>
-      <p class="ahero__sub reveal">O sistema onde a sua recepção atende, agenda e acompanha cada paciente. E onde você vê quanto o marketing virou de faturamento.</p>
-      <div class="ahero__ctas reveal">
+      <span class="product"><img src="/assets/brand/astro-light.svg" alt="">Astro <i>·</i> para clínicas e consultórios</span>
+      <h1 class="ahero__title">Cada paciente atendido.<br><mark>Cada real rastreado.</mark></h1>
+      <p class="ahero__sub">O sistema onde a sua recepção atende, agenda e acompanha cada paciente. E onde você vê quanto o marketing virou de faturamento.</p>
+      <div class="ahero__ctas">
         <a href="/form/" class="btn btn--dark">Agendar demonstração <svg><use href="#i-arrow"/></svg></a>
       </div>
     </div>
 
     <!-- Abas que trocam a tela mostrada (inspiração: Kommo) -->
-    <div class="shots reveal">
+    <div class="shots">
       <div class="tabs" role="tablist" aria-label="Telas do Astro">
         <button class="tab is-active" role="tab" aria-selected="true" aria-controls="shot-0" id="tab-0"><svg><use href="#i-grid"/></svg>Resultados</button>
         <button class="tab" role="tab" aria-selected="false" aria-controls="shot-1" id="tab-1" tabindex="-1"><svg><use href="#i-cols"/></svg>Pacientes</button>
@@ -247,18 +249,20 @@ src="https://www.facebook.com/tr?id=1157603070025919&ev=PageView&noscript=1"
         <div class="browser browser--hero">
           <div class="browser__bar"><i></i><i></i><i></i><span>astro.valadares.co</span></div>
           <div class="browser__screen">
-            <img id="shot-0" role="tabpanel" aria-labelledby="tab-0" class="is-on" src="/assets/img/astro/dashboard.webp" width="1600" height="1000" fetchpriority="high" alt="Painel do Astro com as vendas do mês, os pacientes novos e o tempo de resposta da equipe">
-            <img id="shot-1" role="tabpanel" aria-labelledby="tab-1" src="/assets/img/astro/pipeline.webp" width="1600" height="1000" alt="Pacientes em andamento no Astro, organizados por etapa até a consulta" loading="lazy">
-            <img id="shot-2" role="tabpanel" aria-labelledby="tab-2" src="/assets/img/astro/agente-recepcao-conversa.webp" width="1600" height="1000" alt="Conversa no WhatsApp entre um paciente e a atendente de IA do Astro" loading="lazy">
-            <img id="shot-3" role="tabpanel" aria-labelledby="tab-3" src="/assets/img/astro/relatorios.webp" width="1600" height="1000" alt="Relatório do Astro com quanto cada anúncio trouxe de pacientes e faturamento" loading="lazy">
+            <img id="shot-0" role="tabpanel" aria-labelledby="tab-0" class="is-on" src="/assets/img/astro/dashboard-800.webp" srcset="/assets/img/astro/dashboard-800.webp 800w, /assets/img/astro/dashboard.webp 1600w" sizes="(max-width: 900px) 100vw, 1100px" width="1600" height="1000" fetchpriority="high" alt="Painel do Astro com as vendas do mês, os pacientes novos e o tempo de resposta da equipe">
+            <img id="shot-1" role="tabpanel" aria-labelledby="tab-1" data-src="/assets/img/astro/pipeline-800.webp" data-srcset="/assets/img/astro/pipeline-800.webp 800w, /assets/img/astro/pipeline.webp 1600w" sizes="(max-width: 900px) 100vw, 1100px" width="1600" height="1000" alt="Pacientes em andamento no Astro, organizados por etapa até a consulta">
+            <img id="shot-2" role="tabpanel" aria-labelledby="tab-2" data-src="/assets/img/astro/agente-recepcao-conversa-800.webp" data-srcset="/assets/img/astro/agente-recepcao-conversa-800.webp 800w, /assets/img/astro/agente-recepcao-conversa.webp 1600w" sizes="(max-width: 900px) 100vw, 1100px" width="1600" height="1000" alt="Conversa no WhatsApp entre um paciente e a atendente de IA do Astro">
+            <img id="shot-3" role="tabpanel" aria-labelledby="tab-3" data-src="/assets/img/astro/relatorios-800.webp" data-srcset="/assets/img/astro/relatorios-800.webp 800w, /assets/img/astro/relatorios.webp 1600w" sizes="(max-width: 900px) 100vw, 1100px" width="1600" height="1000" alt="Relatório do Astro com quanto cada anúncio trouxe de pacientes e faturamento">
           </div>
         </div>
         <div class="phone phone--hero">
-          <img src="/assets/img/astro/celular-pipeline.webp" width="800" height="1731" alt="Pacientes em andamento no Astro, no celular">
+          <img src="/assets/img/astro/celular-pipeline-500.webp" srcset="/assets/img/astro/celular-pipeline-500.webp 500w, /assets/img/astro/celular-pipeline.webp 800w" sizes="210px" width="500" height="1083" alt="Pacientes em andamento no Astro, no celular" loading="lazy">
         </div>
       </div>
     </div>
   </header>
+
+  <main>
 
   <!-- QUEM USA -------------------------------------------------------- -->
   <section class="section" id="quem-usa">
@@ -355,7 +359,7 @@ src="https://www.facebook.com/tr?id=1157603070025919&ev=PageView&noscript=1"
       </div>
       <div class="browser">
         <div class="browser__bar"><i></i><i></i><i></i><span>astro.valadares.co</span></div>
-        <img src="/assets/img/astro/pipeline-lead.webp" width="1600" height="1000" alt="Ficha de uma paciente no Astro com contato, anotações, histórico e o anúncio que a trouxe" loading="lazy">
+        <img src="/assets/img/astro/pipeline-lead-800.webp" srcset="/assets/img/astro/pipeline-lead-800.webp 800w, /assets/img/astro/pipeline-lead.webp 1600w" sizes="(max-width: 900px) 100vw, 700px" width="1600" height="1000" alt="Ficha de uma paciente no Astro com contato, anotações, histórico e o anúncio que a trouxe" loading="lazy">
       </div>
     </div>
 
@@ -372,7 +376,7 @@ src="https://www.facebook.com/tr?id=1157603070025919&ev=PageView&noscript=1"
       </div>
       <div class="browser">
         <div class="browser__bar"><i></i><i></i><i></i><span>astro.valadares.co</span></div>
-        <img src="/assets/img/astro/config-funil-sla.webp" width="1600" height="1000" alt="Configuração do Astro com o prazo de 5 minutos para responder cada contato novo" loading="lazy">
+        <img src="/assets/img/astro/config-funil-sla-800.webp" srcset="/assets/img/astro/config-funil-sla-800.webp 800w, /assets/img/astro/config-funil-sla.webp 1600w" sizes="(max-width: 900px) 100vw, 700px" width="1600" height="1000" alt="Configuração do Astro com o prazo de 5 minutos para responder cada contato novo" loading="lazy">
       </div>
     </div>
 
@@ -389,7 +393,7 @@ src="https://www.facebook.com/tr?id=1157603070025919&ev=PageView&noscript=1"
       </div>
       <div class="browser">
         <div class="browser__bar"><i></i><i></i><i></i><span>astro.valadares.co</span></div>
-        <img src="/assets/img/astro/relatorios.webp" width="1600" height="1000" alt="Relatório do Astro com pacientes, vendas e faturamento por anúncio" loading="lazy">
+        <img src="/assets/img/astro/relatorios-800.webp" srcset="/assets/img/astro/relatorios-800.webp 800w, /assets/img/astro/relatorios.webp 1600w" sizes="(max-width: 900px) 100vw, 700px" width="1600" height="1000" alt="Relatório do Astro com pacientes, vendas e faturamento por anúncio" loading="lazy">
       </div>
     </div>
   </section>
@@ -411,7 +415,7 @@ src="https://www.facebook.com/tr?id=1157603070025919&ev=PageView&noscript=1"
 
       <div class="browser browser--dark reveal">
         <div class="browser__bar"><i></i><i></i><i></i><span>astro.valadares.co</span></div>
-        <img src="/assets/img/astro/escuro-agente-recepcao-conversa.webp" width="1600" height="1000" alt="Atendente de IA do Astro conversando com um paciente no WhatsApp, com o botão para a equipe assumir a conversa" loading="lazy">
+        <img src="/assets/img/astro/escuro-agente-recepcao-conversa-800.webp" srcset="/assets/img/astro/escuro-agente-recepcao-conversa-800.webp 800w, /assets/img/astro/escuro-agente-recepcao-conversa.webp 1600w" sizes="(max-width: 900px) 100vw, 1000px" width="1600" height="1000" alt="Atendente de IA do Astro conversando com um paciente no WhatsApp, com o botão para a equipe assumir a conversa" loading="lazy">
       </div>
 
       <div class="agents agents--one">
@@ -427,7 +431,7 @@ src="https://www.facebook.com/tr?id=1157603070025919&ev=PageView&noscript=1"
               <li><svg><use href="#i-check"/></svg>Passa a conversa para a equipe com um resumo</li>
             </ul>
           </div>
-          <img src="/assets/img/astro/agente-recepcao-inicio.webp" width="1600" height="1000" alt="Tela da atendente de IA com as conversas que esperam a equipe" loading="lazy">
+          <img src="/assets/img/astro/agente-recepcao-inicio-800.webp" srcset="/assets/img/astro/agente-recepcao-inicio-800.webp 800w, /assets/img/astro/agente-recepcao-inicio.webp 1600w" sizes="(max-width: 900px) 100vw, 520px" width="1600" height="1000" alt="Tela da atendente de IA com as conversas que esperam a equipe" loading="lazy">
         </article>
       </div>
 
@@ -454,10 +458,10 @@ src="https://www.facebook.com/tr?id=1157603070025919&ev=PageView&noscript=1"
       <div class="agenda__media">
         <div class="browser">
           <div class="browser__bar"><i></i><i></i><i></i><span>astro.valadares.co</span></div>
-          <img src="/assets/img/astro/agenda.webp" width="1600" height="1000" alt="Agenda semanal do Astro com três profissionais e as consultas marcadas" loading="lazy">
+          <img src="/assets/img/astro/agenda-800.webp" srcset="/assets/img/astro/agenda-800.webp 800w, /assets/img/astro/agenda.webp 1600w" sizes="(max-width: 900px) 100vw, 700px" width="1600" height="1000" alt="Agenda semanal do Astro com três profissionais e as consultas marcadas" loading="lazy">
         </div>
         <div class="phone phone--sm">
-          <img src="/assets/img/astro/celular-agenda.webp" width="800" height="1731" alt="Agenda do Astro no celular" loading="lazy">
+          <img src="/assets/img/astro/celular-agenda-500.webp" srcset="/assets/img/astro/celular-agenda-500.webp 500w, /assets/img/astro/celular-agenda.webp 800w" sizes="250px" width="500" height="1083" alt="Agenda do Astro no celular" loading="lazy">
         </div>
       </div>
     </div>
@@ -471,15 +475,15 @@ src="https://www.facebook.com/tr?id=1157603070025919&ev=PageView&noscript=1"
     </div>
     <div class="phones">
       <figure class="reveal">
-        <div class="phone"><img src="/assets/img/astro/celular-dashboard.webp" width="800" height="1731" alt="Resultados do mês no celular" loading="lazy"></div>
+        <div class="phone"><img src="/assets/img/astro/celular-dashboard-500.webp" srcset="/assets/img/astro/celular-dashboard-500.webp 500w, /assets/img/astro/celular-dashboard.webp 800w" sizes="250px" width="500" height="1083" alt="Resultados do mês no celular" loading="lazy"></div>
         <figcaption><b>O mês na mão</b>Pacientes, vendas e quem espera resposta.</figcaption>
       </figure>
       <figure class="reveal">
-        <div class="phone"><img src="/assets/img/astro/celular-pipeline-lead.webp" width="800" height="1731" alt="Ficha de um paciente no celular" loading="lazy"></div>
+        <div class="phone"><img src="/assets/img/astro/celular-pipeline-lead-500.webp" srcset="/assets/img/astro/celular-pipeline-lead-500.webp 500w, /assets/img/astro/celular-pipeline-lead.webp 800w" sizes="250px" width="500" height="1083" alt="Ficha de um paciente no celular" loading="lazy"></div>
         <figcaption><b>Ficha a um toque</b>WhatsApp, ligação e próximos passos.</figcaption>
       </figure>
       <figure class="reveal">
-        <div class="phone"><img src="/assets/img/astro/celular-agente-recepcao-conversa.webp" width="800" height="1731" alt="Conversa da atendente de IA no celular" loading="lazy"></div>
+        <div class="phone"><img src="/assets/img/astro/celular-agente-recepcao-conversa-500.webp" srcset="/assets/img/astro/celular-agente-recepcao-conversa-500.webp 500w, /assets/img/astro/celular-agente-recepcao-conversa.webp 800w" sizes="250px" width="500" height="1083" alt="Conversa da atendente de IA no celular" loading="lazy"></div>
         <figcaption><b>A IA no seu radar</b>Veja e assuma a conversa de onde estiver.</figcaption>
       </figure>
     </div>
@@ -533,20 +537,22 @@ src="https://www.facebook.com/tr?id=1157603070025919&ev=PageView&noscript=1"
     <a href="/form/" class="btn btn--dark reveal">Agendar demonstração <svg><use href="#i-arrow"/></svg></a>
   </section>
 
+  </main>
+
   <!-- FOOTER ---------------------------------------------------------- -->
   <footer class="footer">
-    <img src="/assets/brand/logo-branco.png" alt="Valadares" class="footer__logo">
+    <img src="/assets/brand/logo-branco-1600.webp" width="1600" height="327" alt="Valadares" class="footer__logo" loading="lazy">
 
     <div class="footer__cols">
       <div>
-        <h4>Navegação</h4>
+        <h3>Navegação</h3>
         <a href="/">Início</a>
         <a href="#topo">Astro</a>
         <a href="#como">Como funciona</a>
         <a href="/form/">Contato</a>
       </div>
       <div>
-        <h4>Astro</h4>
+        <h3>Astro</h3>
         <a href="#ia">Atendente de IA</a>
         <a href="#agenda">Agenda</a>
         <a href="#faq">Dúvidas</a>
@@ -565,6 +571,6 @@ src="https://www.facebook.com/tr?id=1157603070025919&ev=PageView&noscript=1"
 
 </div>
 
-<script src="/astro/astro.js?v=3"></script>
+<script src="/astro/astro.js?v=4"></script>
 </body>
 </html>
