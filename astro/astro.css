@@ -23,7 +23,7 @@
   font-size: clamp(40px, 4.4vw, 60px);
   font-weight: 400;
   letter-spacing: -.045em;
-  line-height: 1.06;
+  line-height: 1.16;
   margin: 26px auto 22px;
 }
 .ahero__sub { color: var(--tinta-2); font-size: 18px; line-height: 1.5; max-width: 620px; margin: 0 auto 34px; }
@@ -82,7 +82,6 @@
   border-radius: 50%;
   background: radial-gradient(circle, rgba(244, 230, 184, .9), rgba(244, 230, 184, 0) 70%);
 }
-.shots__note { text-align: right; font-size: 12px; color: var(--cinza-txt); margin: 12px 4px 0; }
 
 /* Mockups ------------------------------------------------------------ */
 .browser {
@@ -139,7 +138,26 @@
 }
 .phone--sm { width: 170px; }
 
+/* Quem usa ---------------------------------------------------------- */
+.who { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+.who__card { background: var(--nevoa-2); border-radius: var(--r); padding: 28px; }
+.who__card--main { background: var(--menta); }
+.who__ico {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: var(--branco);
+  font-size: 20px;
+  margin-bottom: 36px;
+}
+.who h3 { font-size: 22px; font-weight: 500; letter-spacing: -.02em; margin: 0 0 8px; }
+.who p { margin: 0; color: var(--tinta-2); font-size: 15px; line-height: 1.55; }
+
 /* Dores -------------------------------------------------------------- */
+.statement .mid { color: var(--tinta-2); }
+.section__lede--wide { max-width: 640px; }
 .pains { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
 .pain {
   display: flex;
@@ -220,22 +238,6 @@
   background: var(--menta);
   margin-top: -1px;
 }
-
-.more__title { font-size: 24px; font-weight: 400; letter-spacing: -.02em; margin: 0 0 24px; }
-.more { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
-.mini-f {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  padding: 22px;
-  border: 1px solid var(--linha);
-  border-radius: var(--r-s);
-  transition: border-color .3s, transform .4s var(--ease);
-}
-.mini-f:hover { border-color: var(--salvia); transform: translateY(-3px); }
-.mini-f svg { font-size: 22px; margin-bottom: 14px; }
-.mini-f b { font-weight: 500; font-size: 16px; }
-.mini-f span { color: var(--tinta-2); font-size: 14px; line-height: 1.5; }
 
 /* Agentes de IA ------------------------------------------------------ */
 .ai {
@@ -361,35 +363,9 @@
 }
 .phones figure:hover .phone { transform: translateY(-10px); }
 
-/* Vantagens ---------------------------------------------------------- */
-.perks { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 56px; }
-.perk { background: var(--nevoa-2); border-radius: var(--r); padding: 28px; min-height: 230px; display: flex; flex-direction: column; }
-.perk span { font-size: 14px; color: var(--cinza-txt); }
-.perk h3 { font-size: 22px; font-weight: 500; letter-spacing: -.02em; line-height: 1.2; margin: auto 0 10px; padding-top: 40px; }
-.perk p { margin: 0; color: var(--tinta-2); font-size: 15px; line-height: 1.5; }
-.perk--dark { background: var(--menta); }
-
-/* Tecnologia --------------------------------------------------------- */
-.tech { display: grid; grid-template-columns: .8fr 1.6fr; gap: 56px; border-top: 1px solid var(--linha); padding-top: 64px; }
-.tech__head .h3 { margin: 22px 0 14px; max-width: 360px; }
-.tech__head p { color: var(--tinta-2); font-size: 15px; margin: 0; }
-.tech__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 36px 40px; }
-.tech__item { display: flex; gap: 16px; }
-.tech__item > svg {
-  flex: none;
-  width: 44px;
-  height: 44px;
-  padding: 11px;
-  border-radius: 12px;
-  background: var(--nevoa);
-}
-.tech__item b { display: block; font-weight: 500; font-size: 16px; margin: 2px 0 6px; }
-.tech__item p { margin: 0; color: var(--tinta-2); font-size: 14px; line-height: 1.55; }
-
 /* Responsivo --------------------------------------------------------- */
 @media (max-width: 1100px) {
   .pains { grid-template-columns: 1fr 1fr; }
-  .more { grid-template-columns: repeat(2, 1fr); }
   .flow { grid-template-columns: 1fr 1fr; row-gap: 40px; }
   .shots__stage { padding: 36px 90px 0 36px; }
   .phone--hero { width: 170px; right: 24px; }
@@ -407,10 +383,10 @@
   .browser__bar { height: 28px; }
   .browser__bar span { display: none; }
   .phone--hero { display: none; }
-  .shots__note { text-align: left; }
-
-  .pains, .more, .flow, .perks, .agents, .ai__foot, .phones { grid-template-columns: 1fr; }
+  
+  .pains, .flow, .who, .agents, .ai__foot, .phones { grid-template-columns: 1fr; }
   .pain__ico { margin-bottom: 24px; }
+  .who__ico { margin-bottom: 24px; }
   .sec-head { text-align: left; margin-bottom: 48px; }
   .feat { grid-template-columns: 1fr; gap: 28px; margin-bottom: 72px; }
   .feat--flip .feat__copy { order: 0; }
@@ -430,9 +406,5 @@
 
   .phones figure { padding: 28px 28px 0; }
   .phones .phone { margin-bottom: -160px; }
-  .perk { min-height: 0; }
-  .perk h3 { padding-top: 24px; }
 
-  .tech { grid-template-columns: 1fr; gap: 36px; padding-top: 48px; }
-  .tech__grid { grid-template-columns: 1fr; gap: 28px; }
 }

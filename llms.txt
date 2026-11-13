@@ -1,0 +1,34 @@
+# Valadares
+
+> A Valadares faz marketing e vendas para clínicas e consultórios particulares no Brasil. Um só time cuida do anúncio, do site, do CRM, das integrações e da atendente de IA no WhatsApp, e mostra quanto cada paciente custou e faturou.
+
+## O que a Valadares faz
+
+- Marketing: gestão de anúncios no Meta (Instagram e Facebook), Google e TikTok.
+- Sites: site e landing pages para clínicas, com a origem de cada contato registrada.
+- CRM: o Astro, sistema próprio para a recepção atender, agendar e acompanhar cada paciente.
+- Integrações: anúncios, site e CRM ligados. Quando o paciente fecha, o Meta aprende a buscar pacientes parecidos.
+- Atendente de IA: responde no WhatsApp a qualquer hora, tira dúvidas, marca consultas e passa a conversa para a equipe com um resumo.
+
+## Para quem
+
+Médicos e donos de clínicas particulares com paciente de ticket médio a alto, como dermatologia, odontologia, cirurgia plástica e estética.
+
+## Astro
+
+O Astro é o CRM com atendente de IA da Valadares para clínicas e consultórios.
+
+- A recepção usa todo dia: recebe cada contato, responde, marca a consulta e é lembrada dos retornos.
+- O médico ou dono acompanha quando quiser, no computador ou no celular: pacientes, vendas e o que cada anúncio trouxe.
+- A Valadares instala, configura e treina a equipe.
+- Funciona no navegador e no celular como app, sem baixar nada.
+
+## Páginas
+
+- [Início](https://www.valadares.co/): marketing e vendas para clínicas.
+- [Astro](https://www.valadares.co/astro): o CRM com atendente de IA.
+- [Contato](https://www.valadares.co/form/): conversa de 30 minutos com o time.
+
+## Contato
+
+contato@valadares.co
