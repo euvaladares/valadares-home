@@ -483,6 +483,7 @@ mark {
 }
 .funnel__loop svg { width: 24px; height: 24px; padding: 4px; border-radius: 50%; background: var(--menta); }
 .funnel__note { font-size: 12px; color: var(--tinta-2); text-align: right; margin: 10px 4px 0; }
+.funnel__foot { display: none; }
 
 @media (max-width: 1100px) {
   .funnel { grid-template-columns: 1fr; max-width: 440px; margin: 0 auto; gap: 56px; padding: 32px 24px 36px; }
@@ -1104,6 +1105,31 @@ kbd {
 
   .statement { font-size: 28px; }
   .fronts { grid-template-columns: 1fr 1fr; margin-top: -32px; }
+  /* Infográfico no celular: carrossel de deslizar, um card por etapa */
+  .funnel {
+    display: flex;
+    gap: 12px;
+    max-width: none;
+    margin: 0 calc(var(--gutter) * -1);
+    padding: 24px var(--gutter) 28px;
+    border-radius: 0;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    scroll-padding: 0 var(--gutter);
+    scrollbar-width: none;
+  }
+  .funnel::-webkit-scrollbar { display: none; }
+  .fstage { flex: 0 0 84%; scroll-snap-align: start; gap: 20px; }
+  .fstage--ads::after, .fstage--page::after, .fstage--care::after { display: none; }
+  .fstage--ads .fstage__body { min-height: 280px; }
+  .funnel__loop { display: none; }
+  .funnel__foot { display: flex; flex-direction: column; align-items: flex-start; gap: 12px; margin: 16px 0 0; }
+  .funnel__swipe { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; color: var(--tinta-2); }
+  .funnel__swipe svg { font-size: 14px; }
+  .funnel__cycle { display: inline-flex; align-items: center; gap: 8px; font-size: 14px; }
+  .funnel__cycle svg { width: 26px; height: 26px; padding: 5px; border-radius: 50%; background: var(--menta); }
+  .funnel__note { text-align: left; margin-top: 8px; }
   .fronts li:last-child { grid-column: span 2; }
   .astro-cta { grid-template-columns: 1fr; padding: 40px 20px 0; border-radius: 28px; gap: 32px; }
   .astro-cta__media { padding: 0; margin-right: -20px; }
