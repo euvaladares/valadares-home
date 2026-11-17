@@ -68,7 +68,9 @@ mark {
   margin: 0;
 }
 .muted { color: var(--tinta-2); margin: 0; line-height: 1.5; font-size: 15px; }
-.dim { color: var(--cinza-txt); }
+.dim { color: #869391; }
+/* Mantém a palavra e o ícone juntos na quebra de linha */
+.nw { white-space: nowrap; }
 
 .statement {
   font-size: clamp(28px, 3.6vw, 48px);
@@ -259,30 +261,7 @@ mark {
 }
 .proof__faces img:first-child { margin-left: 0; }
 .proof strong { display: block; font-weight: 500; font-size: 16px; }
-.proof span { font-size: 13px; color: var(--cinza-txt); }
-.ask {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-  max-width: 400px;
-  background: var(--nevoa);
-  border-radius: 999px;
-  padding: 7px 7px 7px 22px;
-  font-size: 14px;
-  color: var(--tinta-2);
-  transition: background .3s;
-}
-.ask:hover { background: var(--menta-2); }
-.ask__go {
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  display: grid;
-  place-items: center;
-  background: var(--menta);
-  color: var(--verde);
-}
+.proof span { font-size: 13px; color: var(--tinta-2); }
 
 .hero__media {
   position: relative;
@@ -566,8 +545,8 @@ mark {
 }
 
 /* Checks ------------------------------------------------------------- */
-.todo-head { display: grid; grid-template-columns: 260px 1fr; gap: 20px; align-items: start; margin-bottom: 64px; }
-.todo-head .bullet { margin-top: 14px; }
+.todo-head { display: grid; grid-template-columns: 260px 1fr; gap: 20px; align-items: end; margin-bottom: 64px; }
+.todo-head .bullet { margin-bottom: 10px; }
 .checks {
   list-style: none;
   padding: 0;
@@ -614,6 +593,7 @@ mark {
   background: var(--menta);
   transition: background .3s;
 }
+.step::after { content: ""; position: absolute; inset: -14px; }
 .step.is-done::before { background: var(--salvia); }
 .step.is-active {
   width: 64px;
@@ -651,7 +631,7 @@ mark {
 .cmp h3 { font-size: 20px; font-weight: 500; margin: 0 0 26px; height: 26px; display: flex; align-items: center; }
 .cmp h3 img { height: 20px; width: auto; }
 .cmp dl { margin: 0; display: grid; gap: 0; }
-.cmp dt { font-size: 12px; color: var(--cinza-txt); text-transform: uppercase; letter-spacing: .06em; padding-top: 16px; border-top: 1px solid var(--linha); }
+.cmp dt { font-size: 12px; color: var(--tinta-2); text-transform: uppercase; letter-spacing: .06em; padding-top: 16px; border-top: 1px solid var(--linha); }
 .cmp dt:first-child { border-top: 0; padding-top: 0; }
 .cmp dd { margin: 6px 0 16px; font-size: 16px; color: var(--tinta-2); }
 .cmp--us { background: var(--verde); color: var(--branco); }
@@ -685,12 +665,13 @@ mark {
   font-weight: 300;
   letter-spacing: -.03em;
 }
-.phase h3 { font-size: 28px; font-weight: 400; letter-spacing: -.03em; margin: auto 0 12px; padding-top: 48px; }
-.phase p { color: var(--tinta-2); font-size: 15px; line-height: 1.5; margin: 0 0 22px; }
+.phase h3 { font-size: 28px; font-weight: 400; letter-spacing: -.03em; margin: 0 0 12px; padding-top: 48px; }
+.phase p { flex: 1; color: var(--tinta-2); font-size: 15px; line-height: 1.5; margin: 0 0 22px; }
 .phase .label { align-self: flex-start; font-size: 13px; }
 
 /* FAQ ---------------------------------------------------------------- */
 .faq { display: grid; grid-template-columns: 1fr 1.4fr; gap: 56px; }
+.faq__head { position: sticky; top: 110px; align-self: start; }
 .faq__head .h2 { margin: 22px 0 16px; }
 .faq__list { display: grid; gap: 10px; }
 .qa { background: var(--nevoa-2); border-radius: var(--r-s); padding: 0 24px; overflow: hidden; transition: background .4s var(--ease); }
@@ -916,7 +897,7 @@ kbd {
 
 .footer__cols {
   display: grid;
-  grid-template-columns: 2fr 1fr 1.2fr;
+  grid-template-columns: 1fr 1fr 240px;
   gap: 32px;
   padding: 24px 40px 56px;
 }
@@ -1157,6 +1138,7 @@ kbd {
   .phase h3 { padding-top: 32px; }
 
   .faq { grid-template-columns: 1fr; gap: 28px; }
+  .faq__head { position: static; }
   .qa summary { font-size: 16px; }
 
   .cta { padding-top: 110px; }
@@ -1179,5 +1161,4 @@ kbd {
   .floatbar .btn { white-space: nowrap; }
   .hero__title { font-size: 34px; }
   .checks { grid-template-columns: 1fr; }
-  .ask { font-size: 13px; }
-}
+  }

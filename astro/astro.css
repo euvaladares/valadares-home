@@ -209,7 +209,7 @@
   border-radius: 50%;
   background: var(--verde);
 }
-.flow__n { font-size: 14px; color: var(--cinza-txt); }
+.flow__n { font-size: 14px; color: var(--tinta-2); }
 .flow h3 { font-size: 22px; font-weight: 400; letter-spacing: -.02em; margin: 22px 0 10px; }
 .flow p { margin: 0; color: var(--tinta-2); font-size: 15px; line-height: 1.55; }
 
@@ -317,8 +317,9 @@
 }
 
 .agents--one { grid-template-columns: 1fr; }
-.agents--one .agent { display: grid; grid-template-columns: 1fr 1.1fr; gap: 40px; align-items: end; padding: 36px 0 0 36px; }
+.agents--one .agent { display: grid; grid-template-columns: 1fr 1.1fr; gap: 40px; align-items: center; padding: 36px 0 0 36px; }
 .agents--one .agent__copy { padding-bottom: 36px; }
+.agents--one .agent img { align-self: end; }
 .agents--one .agent img { margin-top: 0; }
 .ai__foot { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 12px; }
 .ai__foot > div {
