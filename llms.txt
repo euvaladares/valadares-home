@@ -21,13 +21,9 @@ O valor depende do tamanho da clínica e vem numa proposta fechada depois do Rai
 
 Clínicas e consultórios particulares com tratamento de valor médio a alto e paciente que volta: dermatologia, cirurgia plástica, estética, odontologia e oftalmologia. Atendimento remoto, no Brasil todo.
 
-## Quem somos
-
-A Valadares Assessoria foi criada por Richard Valadares, sócio-fundador e especialista, com mais de 6 anos em marketing de performance. A Bianca, assistente virtual da assessoria no WhatsApp, é um exemplo do atendimento que a assessoria coloca nas clínicas.
-
 ## Páginas
 
-- [Início](https://www.valadares.co/): o que a assessoria faz, os pacotes e quem está por trás.
+- [Início](https://www.valadares.co/): o que a assessoria faz, os pacotes e as provas.
 - [Astro](https://www.valadares.co/astro): o sistema da recepção.
 - [Raio-X da Captação](https://www.valadares.co/form/): pedido do Raio-X, grátis.
 
