@@ -63,9 +63,10 @@
     var loop = fbox(document.getElementById("f-loop"));
 
     // 01: canais alimentam o anúncio; 01 → 02: o anúncio leva para a página
-    funnel.querySelectorAll('[data-f="ch"]').forEach(function (c, i) {
+    var chs = funnel.querySelectorAll('[data-f="ch"]');
+    chs.forEach(function (c, i) {
       var b = fbox(c);
-      var ty = ad.cy + (i - 1.5) * 14;
+      var ty = ad.cy + (i - (chs.length - 1) / 2) * 14;
       fadd("path", { d: fcurve(b.r, b.cy, ad.l, ty), class: "flow" });
     });
     fadd("circle", { cx: ad.l, cy: ad.cy, r: 3.5 });
@@ -139,13 +140,13 @@
     }
   });
 
-  // Jornada da Ana ------------------------------------------------------
+  // História da Ana ------------------------------------------------------
   var STEPS = [
-    { t: "O anúncio", d: "A Ana procura há meses um tratamento para manchas. Um anúncio da sua clínica aparece no Instagram falando exatamente disso. Feito para ela.", img: "paciente-celular-1000.webp", l: "Frente: Marketing" },
-    { t: "O site", d: "Ela clica e cai numa página que tira as dúvidas. Deixa o contato, que chega no Astro já dizendo qual anúncio a trouxe.", img: "mao-celular-1000.webp", l: "Frente: Sites" },
-    { t: "O atendimento", d: "Ana manda mensagem às 22h. A atendente de IA responde na hora, tira as dúvidas e marca a avaliação. De manhã, a recepção já tem o resumo.", img: "recepcao-1000.webp", l: "Frente: Atendente de IA" },
-    { t: "A venda", d: "A Ana fecha o procedimento e o valor fica registrado no Astro. A venda volta para o Meta, que passa a buscar mais pacientes como ela.", img: "clinica-branca-1000.webp", l: "Frente: Integrações" },
-    { t: "O retorno", d: "Meses depois, o Astro avisa que é hora da revisão. A Ana volta, e o relatório mostra quanto ela já rendeu desde o primeiro anúncio.", img: "paciente-sorriso-1000.webp", l: "Frente: CRM" }
+    { t: "O anúncio", d: "A Ana procura há meses um tratamento para manchas. Um anúncio da sua clínica aparece no Instagram falando exatamente disso.", img: "paciente-celular-1000.webp", l: "Anúncio" },
+    { t: "A página", d: "Ela clica e cai numa página só sobre esse tratamento. Deixa o WhatsApp, e o contato chega na hora no Astro, já dizendo de qual anúncio veio.", img: "mao-celular-1000.webp", l: "Página" },
+    { t: "A recepção", d: "A recepção chama a Ana, tira as dúvidas e marca a avaliação. Se ela não responde, o Astro lembra a equipe de fazer o acompanhamento.", img: "recepcao-1000.webp", l: "Recepção" },
+    { t: "A consulta", d: "A Ana vem, faz a avaliação e fecha o tratamento. Fica registrado de onde ela veio, e o Meta aprende a procurar pacientes parecidas.", img: "clinica-branca-1000.webp", l: "Consulta" },
+    { t: "O retorno", d: "Meses depois, o Astro lembra a recepção de chamar a Ana para a revisão, e ela volta. No relatório do mês, você vê quantos contatos viraram consulta.", img: "paciente-sorriso-1000.webp", l: "Retorno" }
   ];
 
   var stepsEl = document.querySelector(".steps");

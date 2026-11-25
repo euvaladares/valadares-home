@@ -1,33 +1,35 @@
-# Valadares
+# Valadares Assessoria
 
-> A Valadares faz marketing e vendas para clínicas e consultórios particulares no Brasil. Um só time cuida do anúncio, do site, do CRM, das integrações e da atendente de IA no WhatsApp, e mostra quanto cada paciente custou e faturou.
+> A Valadares Assessoria faz marketing para clínicas e consultórios particulares no Brasil. A gente traz paciente particular pela internet e prepara a recepção da clínica para nenhum contato esfriar. Todo mês a clínica vê quantos contatos viraram consulta.
 
-## O que a Valadares faz
+## Como funciona
 
-- Marketing: gestão de anúncios no Meta (Instagram e Facebook), Google e TikTok.
-- Sites: site e landing pages para clínicas, com a origem de cada contato registrada.
-- CRM: o Astro, sistema próprio para a recepção atender, agendar e acompanhar cada paciente.
-- Integrações: anúncios, site e CRM ligados. Quando o paciente fecha, o Meta aprende a buscar pacientes parecidos.
-- Atendente de IA: responde no WhatsApp a qualquer hora, tira dúvidas, marca consultas e passa a conversa para a equipe com um resumo.
+- Anúncio: Meta (Instagram e Facebook) e Google, para quem procura o tratamento.
+- Página: uma para cada tratamento, com o WhatsApp à mão e a origem de cada contato registrada.
+- Recepção: o Astro, sistema que a assessoria implanta na recepção. Ele avisa quem chegou e lembra de quem precisa de retorno. A assessoria instala e treina a equipe.
+- Relatório mensal simples: quanto a clínica investiu, quantos contatos chegaram, quantos viraram consulta e procedimento.
+
+## Pacotes
+
+- Raio-X da Captação (grátis): uma página sobre como a clínica aparece e atende hoje (Google e Maps, avaliações, WhatsApp, site e anúncios), com 3 ajustes que a equipe consegue fazer na mesma semana. É o primeiro passo para tudo.
+- Agenda Particular (programa de 90 dias, o principal): anúncios, página por tratamento, Astro na recepção e equipe treinada. Mês 1: de onde vem cada contato. Mês 2: quantos contatos viraram consulta. Mês 3: quanto custou cada paciente.
+- Retorno de Pacientes (para quem já tem agência): lembrete de retorno e de orçamento, convite de volta para a base antiga dentro das regras do CFM e da LGPD, e treinamento da recepção.
+
+O valor depende do tamanho da clínica e vem numa proposta fechada depois do Raio-X. A verba dos anúncios é à parte. A assessoria não promete número de pacientes nem faturamento.
 
 ## Para quem
 
-Médicos e donos de clínicas particulares com paciente de ticket médio a alto, como dermatologia, odontologia, cirurgia plástica e estética.
+Clínicas e consultórios particulares com tratamento de valor médio a alto e paciente que volta: dermatologia, cirurgia plástica, estética, odontologia e oftalmologia. Atendimento remoto, no Brasil todo.
 
-## Astro
+## Quem somos
 
-O Astro é o CRM com atendente de IA da Valadares para clínicas e consultórios.
-
-- A recepção usa todo dia: recebe cada contato, responde, marca a consulta e é lembrada dos retornos.
-- O médico ou dono acompanha quando quiser, no computador ou no celular: pacientes, vendas e o que cada anúncio trouxe.
-- A Valadares instala, configura e treina a equipe.
-- Funciona no navegador e no celular como app, sem baixar nada.
+A Valadares Assessoria foi criada por Richard Valadares, sócio-fundador e especialista, com mais de 6 anos em marketing de performance. A Bianca, assistente virtual da assessoria no WhatsApp, é um exemplo do atendimento que a assessoria coloca nas clínicas.
 
 ## Páginas
 
-- [Início](https://www.valadares.co/): marketing e vendas para clínicas.
-- [Astro](https://www.valadares.co/astro): o CRM com atendente de IA.
-- [Contato](https://www.valadares.co/form/): conversa de 30 minutos com o time.
+- [Início](https://www.valadares.co/): o que a assessoria faz, os pacotes e quem está por trás.
+- [Astro](https://www.valadares.co/astro): o sistema da recepção.
+- [Raio-X da Captação](https://www.valadares.co/form/): pedido do Raio-X, grátis.
 
 ## Contato
 
